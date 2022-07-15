@@ -1,0 +1,2 @@
+# Oleksii_Korovushkin_Junior_Developer_test-_assignment
+Scandiweb Junior Developer test assignment
