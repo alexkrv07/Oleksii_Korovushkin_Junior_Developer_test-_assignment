@@ -1,0 +1,11 @@
+.app {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1300px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  padding: 0;
+}
