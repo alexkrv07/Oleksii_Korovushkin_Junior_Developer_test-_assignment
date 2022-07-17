@@ -21,6 +21,7 @@ const GET_CURRENCIES = gql`
 `;
 
 class App extends Component {
+
   state = {
     categories: [],
     currencies: [],
@@ -30,12 +31,7 @@ class App extends Component {
 
   componentDidMount = async () => {
     await this.getCategory();
-    const newCurrencies = await this.getCurrencies();
-    // const newActiveC
-    //  this.setState({
-    //   categories: newCategories,
-    //   activeCategory: newCategories[0]
-    // });
+    await this.getCurrencies();
     console.log(this.state);
   }
 
@@ -47,7 +43,7 @@ class App extends Component {
       categories: newCategories,
       activeCategory: newCategories[0],
     });
-  }
+  };
 
   getCurrencies = async () => {
     const {client } = this.props;
@@ -62,13 +58,31 @@ class App extends Component {
       currencies: newCurrencies,
       activeCurrency: newCurrencies[0],
     });
+  };
 
-  }
+  setActiveCategory = (category) => {
+    this.setState({
+      activeCategory: category,
+    });
+  };
+
+  setActiveCurrency = (currency) => {
+    this.setState({
+      activeCurrency: currency,
+    });
+  };
 
   render() {
     return (
       <div className="app">
-        <Header></Header>
+        <Header
+          categories={this.state.categories}
+          currencies={this.state.currencies}
+          activeCategory={this.state.activeCategory}
+          activeCurrency={this.state.activeCurrency}
+          setActiveCategory={this.setActiveCategory}
+          setActeveCurrency={this.setActiveCurrency}
+        ></Header>
       </div>
     );
   }
