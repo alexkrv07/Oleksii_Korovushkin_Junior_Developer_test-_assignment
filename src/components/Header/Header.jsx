@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo';
 import Navbar from '../Navbar/Navbar';
+import CurrencySwitcher from '../CurrencySwitcher/CurrencySwitcher';
 import styles from './styles.module.css';
 
 class Header extends Component {
   render() {
-    const isRender = this.props.categories
-      && this.props.activeCategory;
-    console.log(this.props.categories);
+    const isRender =
+      this.props.categories.length
+      && this.props.activeCategory
+      && this.props.activeCurrency
+      && this.props.currencies.length;
 
-    console.log(this.props.activeCategory);
     if (isRender) {
       return (
         <header className={styles.header}>
           <div className="container">
             <div className={styles.container}>
               <Navbar
-                className="menu"
+                className={styles.navbar}
                 categories={this.props.categories}
                 activeCategory={this.props.activeCategory}
                 setActiveCategory={this.props.setActiveCategory}
               ></Navbar>
-              <Logo/>
+              <Logo className={styles.logo}/>
+              <CurrencySwitcher
+                className={styles.curencySwitcher}
+                activeCurrency={this.props.activeCurrency}
+                currencies={this.props.currencies}
+                setActiveCurrency={this.props.setActiveCurrency}
+              />
             </div>
           </div>
         </header>

@@ -13,7 +13,6 @@ class Navbar extends Component {
 
   render() {
     const categories = this.props.categories;
-    console.log(categories);
     const activeCategory = this.props.activeCategory;
     return (
       <nav className={styles.nav}>

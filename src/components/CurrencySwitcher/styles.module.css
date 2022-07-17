@@ -1,0 +1,64 @@
+.currencyWrp {
+  position: relative;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.currencySwitcher {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+}
+
+.currencyValue,
+.currencySymbol {
+  width: 30px;
+  text-align: right;
+}
+
+.currencySelect {
+  width: 10px;
+  height: 20px;
+  background-image: url(../../assets/image/arrow_down.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+
+.currencySelect.open {
+  background-image: url(../../assets/image/arrow_up.svg);
+}
+
+
+.currencyList {
+  position: absolute;
+  width: 115px;
+  top: 100%;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: .3s;
+}
+
+.currencyItem {
+  margin: 0;
+  padding: 0;
+  line-height: 45px;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.currencyItem:hover {
+  background-color: #EEEEEE;
+}

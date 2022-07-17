@@ -32,7 +32,6 @@ class App extends Component {
   componentDidMount = async () => {
     await this.getCategory();
     await this.getCurrencies();
-    console.log(this.state);
   }
 
   getCategory = async () => {
@@ -81,8 +80,9 @@ class App extends Component {
           activeCategory={this.state.activeCategory}
           activeCurrency={this.state.activeCurrency}
           setActiveCategory={this.setActiveCategory}
-          setActeveCurrency={this.setActiveCurrency}
-        ></Header>
+          setActiveCurrency={this.setActiveCurrency}
+        >
+        </Header>
       </div>
     );
   }
