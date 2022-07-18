@@ -3,6 +3,7 @@ import Logo from '../Logo/Logo';
 import Navbar from '../Navbar/Navbar';
 import CurrencySwitcher from '../CurrencySwitcher/CurrencySwitcher';
 import styles from './styles.module.css';
+import CartOverlay from '../CartOverLay/CartOverlay';
 
 class Header extends Component {
   render() {
@@ -30,6 +31,7 @@ class Header extends Component {
                 currencies={this.props.currencies}
                 setActiveCurrency={this.props.setActiveCurrency}
               />
+              <CartOverlay/>
             </div>
           </div>
         </header>

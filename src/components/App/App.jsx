@@ -26,7 +26,11 @@ class App extends Component {
     categories: [],
     currencies: [],
     activeCategory: '',
-    activeCurrency: {}
+    activeCurrency: {},
+    products: {},
+    cart: {
+      items: 0,
+    }
   }
 
   componentDidMount = async () => {

@@ -9,7 +9,7 @@
   padding: 0;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
   box-sizing: border-box;
 }
 
@@ -19,8 +19,4 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-}
-
-.curencySwitcher {
-  margin-right: 60px;
 }

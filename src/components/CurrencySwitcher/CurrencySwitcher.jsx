@@ -12,10 +12,14 @@ class CurrencySwitcher extends Component {
     });
   };
 
-  changeCurrency = (currency) => {
+  closeCurrencyDropDown = () => {
     this.setState({
       isOpen: false,
     });
+  }
+
+  changeCurrency = (currency) => {
+    this.closeCurrencyDropDown();
     this.props.setActiveCurrency(currency);
   }
 
