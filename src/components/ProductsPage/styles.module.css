@@ -1,0 +1,13 @@
+.card {
+  width: 300px;
+}
+
+.price {
+  display: flex;
+}
+
+.cardWrp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px
+}

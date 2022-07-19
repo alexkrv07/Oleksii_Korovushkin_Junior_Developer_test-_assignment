@@ -1,38 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-// import { gql } from '@apollo/client';
+import ProductsPage from '../ProductsPage/ProductsPage';
 import './app.css';
-
-// const GET_PRODUCTS_BY_CATEGORY = gql`
-//   query GetProductsByCategory($category: String) {
-//     category (input: {title: $category}) {
-//       name
-//       products {
-//         id
-//         name
-//         inStock
-//         brand
-//         gallery
-//         category
-//         prices {
-//           currency {
-//             label
-//             symbol
-//           }
-//           amount
-//         }
-//         attributes {
-//           name
-//           items{
-//             id
-//             value
-//             displayValue
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
 
 class App extends Component {
 
@@ -60,14 +29,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
+      <>
         <Header
           activeCategory={this.state.activeCategory}
           activeCurrency={this.state.activeCurrency}
           setActiveCategory={this.setActiveCategory}
           setActiveCurrency={this.setActiveCurrency}
         />
-      </div>
+        <main className="main">
+          <div className="container">
+            <ProductsPage
+              category={this.state.activeCategory}
+              productId={this.props.productId}
+              activeCurrency={this.state.activeCurrency}
+            />
+          </div>
+        </main>
+      </>
     );
   }
 }
