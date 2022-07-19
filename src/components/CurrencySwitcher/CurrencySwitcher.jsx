@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
+import CurrencySymbol from '../CurrencySymbol/CurrencySymbol';
+import CurrencyList from '../CurrencyList/CurrencyList';
 import styles from './styles.module.css';
 
 const GET_CURRENCIES = gql`
@@ -71,28 +73,24 @@ class CurrencySwitcher extends Component {
           return (
             <div className={`${styles.currencyWrp} ${this.props.className ? this.props.className : ''}`}>
               <div className={styles.currencySwitcher}>
-                <div className={styles.currencyValue}>{activeCurrency.symbol}</div>
+                <CurrencySymbol
+                  className={styles.currencyValue}
+                  currency={activeCurrency}
+                />
                 <button
                   className={
                     this.state.isOpen
                     ? `${styles.currencySelect} ${styles.open}`
                     : styles.currencySelect}
                     onClick={this.toggleDropDown}
-                ></button>
+                 />
               </div>
               {this.state.isOpen &&
-                <ul className={styles.currencyList}>
-                  {currencies.map((currency, index) =>
-                    <li
-                      className={styles.currencyItem}
-                      key={index}
-                      onClick={() => this.changeCurrency(currency)}
-                    >
-                      <span className={styles.currencySymbol}>{currency.symbol}</span>
-                      <span className={styles.currencyLabel}>{currency.label}</span>
-                    </li>
-                  )}
-                </ul>
+                <CurrencyList
+                  className={styles.currencyList}
+                  currencies={currencies}
+                  changeCurrency={this.changeCurrency}
+                />
               }
             </div>
           );

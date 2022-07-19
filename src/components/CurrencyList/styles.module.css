@@ -1,0 +1,25 @@
+.currencyList {
+  width: 115px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: .3s;
+}
+
+.currencyItem {
+  margin: 0;
+  padding: 0;
+  line-height: 45px;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.currencyItem:hover {
+  background-color: #EEEEEE;
+}
+
+.currencySymbol {
+  width: 30px;
+}

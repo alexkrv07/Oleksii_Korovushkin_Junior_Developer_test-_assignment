@@ -3,6 +3,7 @@
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
   font-size: 18px;
+  height: 100%;
   color: #1D1F22
 }
 
@@ -13,10 +14,8 @@
   gap: 10px;
 }
 
-.currencyValue,
-.currencySymbol {
+.currencyValue {
   width: 30px;
-  text-align: right;
 }
 
 .currencySelect {
@@ -41,25 +40,6 @@
 
 .currencyList {
   position: absolute;
-  width: 115px;
   top: 100%;
   left: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  transition: .3s;
-}
-
-.currencyItem {
-  margin: 0;
-  padding: 0;
-  line-height: 45px;
-  display: flex;
-  gap: 10px;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.currencyItem:hover {
-  background-color: #EEEEEE;
 }
