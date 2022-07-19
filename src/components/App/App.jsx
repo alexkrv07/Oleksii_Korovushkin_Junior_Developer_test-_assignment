@@ -3,14 +3,6 @@ import Header from '../Header/Header';
 import { gql } from '@apollo/client';
 import './app.css';
 
-const GET_CATEGORIES = gql`
-  query GetCategories  {
-    categories {
-      name
-    }
-  }
-`;
-
 const GET_CURRENCIES = gql`
   query GetCurrencies {
     currencies {
@@ -20,33 +12,53 @@ const GET_CURRENCIES = gql`
   }
 `;
 
+// const GET_PRODUCTS_BY_CATEGORY = gql`
+//   query GetProductsByCategory($category: String) {
+//     category (input: {title: $category}) {
+//       name
+//       products {
+//         id
+//         name
+//         inStock
+//         brand
+//         gallery
+//         category
+//         prices {
+//           currency {
+//             label
+//             symbol
+//           }
+//           amount
+//         }
+//         attributes {
+//           name
+//           items{
+//             id
+//             value
+//             displayValue
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
+
 class App extends Component {
 
   state = {
-    categories: [],
     currencies: [],
     activeCategory: '',
     activeCurrency: {},
-    products: {},
     cart: {
       items: 0,
-    }
+      products: []
+    },
+    productId: null,
   }
 
   componentDidMount = async () => {
-    await this.getCategory();
     await this.getCurrencies();
   }
-
-  getCategory = async () => {
-    const {client } = this.props;
-    const { data } = await client.query({query: GET_CATEGORIES});
-    const newCategories = data.categories.map(category => category.name);
-    this.setState({
-      categories: newCategories,
-      activeCategory: newCategories[0],
-    });
-  };
 
   getCurrencies = async () => {
     const {client } = this.props;
@@ -79,14 +91,12 @@ class App extends Component {
     return (
       <div className="app">
         <Header
-          categories={this.state.categories}
           currencies={this.state.currencies}
           activeCategory={this.state.activeCategory}
           activeCurrency={this.state.activeCurrency}
           setActiveCategory={this.setActiveCategory}
           setActiveCurrency={this.setActiveCurrency}
-        >
-        </Header>
+        />
       </div>
     );
   }

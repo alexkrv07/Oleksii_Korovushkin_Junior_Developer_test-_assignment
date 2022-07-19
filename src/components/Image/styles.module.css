@@ -1,0 +1,6 @@
+.image {
+  display: block;
+  max-width: 100%;
+  background-color: transparent;
+  height: auto;
+}

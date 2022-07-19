@@ -1,30 +1,62 @@
 import React, { Component } from 'react';
 import MenuItem from '../MenuItem/MenuItem';
+import { gql } from '@apollo/client';
+import { Query } from '@apollo/client/react/components';
 import styles from './styles.module.css';
 
+const GET_CATEGORIES = gql`
+  query GetCategories  {
+    categories {
+      name
+    }
+  }
+`;
+
 class Navbar extends Component {
-  setActiveCategory = (category) => {
-    this.props.setActiveCategory(category);
+
+  getCategories = (data) => {
+    return data.categories.map(category => category.name);
   };
 
-  setActiveCurrency = (currency) => {
-    this.props.setActiveCategory(currency);
+  setActiveCategory = (data) => {
+    const categories = this.getCategories(data);
+    this.activeCategory = categories[0];
+    this.props.setActiveCategory(this.activeCategory);
   };
 
   render() {
-    const categories = this.props.categories;
     const activeCategory = this.props.activeCategory;
+
     return (
       <nav className={styles.nav}>
         <ul className={styles.menuList}>
-          {categories.map((category, index) =>
-            <MenuItem
-              key={index}
-              setActiveCategory={this.setActiveCategory}
-              category={category}
-              activeCategory={activeCategory}
-            />
-          )}
+          <Query
+            query={GET_CATEGORIES}
+            onCompleted={(data) => this.setActiveCategory(data)}
+          >
+            {({ loading, error, data }) => {
+              if (loading) {
+                return null;
+              }
+
+              if (error) {
+                return `Error! ${error}`;
+              }
+
+              const categories = this.getCategories(data);
+
+              return (
+                categories.map((category, index) =>
+                  <MenuItem
+                    key={index}
+                    setActiveCategory={this.props.setActiveCategory}
+                    category={category}
+                    activeCategory={activeCategory}
+                  />
+                )
+              );
+            }}
+          </Query>
         </ul>
       </nav>
     );

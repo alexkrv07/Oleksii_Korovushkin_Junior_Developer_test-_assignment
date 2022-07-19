@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import Logo from '../Logo/Logo';
 import Navbar from '../Navbar/Navbar';
 import CurrencySwitcher from '../CurrencySwitcher/CurrencySwitcher';
-import styles from './styles.module.css';
 import CartOverlay from '../CartOverLay/CartOverlay';
+import styles from './styles.module.css';
 
 class Header extends Component {
   render() {
     const isRender =
-      this.props.categories.length
-      && this.props.activeCategory
-      && this.props.activeCurrency
+      // this.props.categories.length
+      // this.props.activeCategory
+      this.props.activeCurrency
       && this.props.currencies.length;
 
     if (isRender) {
@@ -20,7 +20,7 @@ class Header extends Component {
             <div className={styles.container}>
               <Navbar
                 className={styles.navbar}
-                categories={this.props.categories}
+                // categories={this.props.categories}
                 activeCategory={this.props.activeCategory}
                 setActiveCategory={this.props.setActiveCategory}
               ></Navbar>
