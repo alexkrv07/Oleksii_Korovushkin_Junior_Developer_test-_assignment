@@ -18,10 +18,10 @@ class Navbar extends Component {
     return data.categories.map(category => category.name);
   };
 
-  setActiveCategory = (data) => {
+  setInitialCategory = (data) => {
     const categories = this.getCategories(data);
-    this.activeCategory = categories[0];
-    this.props.setActiveCategory(this.activeCategory);
+    const initialCategory = categories[0];
+    this.props.setActiveCategory(initialCategory);
   };
 
   render() {
@@ -32,7 +32,7 @@ class Navbar extends Component {
         <ul className={styles.menuList}>
           <Query
             query={GET_CATEGORIES}
-            onCompleted={(data) => this.setActiveCategory(data)}
+            onCompleted={(data) => this.setInitialCategory(data)}
           >
             {({ loading, error, data }) => {
               if (loading) {
