@@ -4,7 +4,6 @@ import styles from './styles.module.css';
 class ButtonCartOverlay extends Component {
   render() {
     const totalCartItems = this.props.items;
-    // const totalCartItems = 1;
     return (
       <button
         className={`${styles.buttonCartOverlay} ${this.props.className ? this.props.className : ''}`}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-import ProductsPage from '../ProductsPage/ProductsPage';
+import ProductListPage from '../ProductListPage/ProductListPage';
 import './app.css';
 
 class App extends Component {
@@ -38,7 +38,7 @@ class App extends Component {
         />
         <main className="main">
           <div className="container">
-            <ProductsPage
+            <ProductListPage
               category={this.state.activeCategory}
               productId={this.props.productId}
               activeCurrency={this.state.activeCurrency}

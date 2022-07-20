@@ -1,0 +1,29 @@
+/* .card {
+  width: 300px;
+}
+
+.price {
+  display: flex;
+} */
+
+.productPage {
+  margin: 0 0 0 0;
+  padding: 80px 0 0 0;
+  box-sizing: border-box;
+}
+
+/* .cardWrp {
+  margin: 80px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px
+} */
+
+.title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-style: 42px;
+  line-height: 62px;
+  text-transform: capitalize;
+  color: #1D1F22;
+}
