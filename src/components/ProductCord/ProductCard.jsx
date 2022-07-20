@@ -14,11 +14,12 @@ class ProductCard extends Component {
   render() {
     const product = this.props.product;
     const price = this.getPrice();
+    const isInStock = this.props.product.inStock;
 
     return (
       <li
         // className={styles.productCard}
-        className={`${styles.productCard} ${this.props.className ? this.props.className : ''}`}
+        className={`${styles.productCard} ${this.props.className ? this.props.className : ''} ${!isInStock ? styles.disable : ''}`}
       >
         <Image
           className={styles.productCardImage}
@@ -37,6 +38,12 @@ class ProductCard extends Component {
         <button className={styles.buttonAddToCart}>
           <span className={styles.buttonAddToCartIcon}></span>
         </button>
+        {!isInStock &&
+           <div className={styles.disactive}>
+              Out of stock
+            </div>
+        }
+
       </li>
     );
   }
