@@ -49,7 +49,9 @@ class ProductListPage extends Component {
       title: this.props.category,
     }
     return (
-      <div className={styles.productPage}>
+      <div
+        className={`${styles.productPage} ${this.props.className ? this.props.className : ''}`}
+      >
         <h2 className={styles.title}>{this.props.category}</h2>
         <Query
           query={GET_PRODUCTS_BY_CATEGORY}

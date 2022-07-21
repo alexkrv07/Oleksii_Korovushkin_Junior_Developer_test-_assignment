@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Image from '../Image/Image';
-import CurrencySymbol from '../CurrencySymbol/CurrencySymbol';
 import styles from './styles.module.css';
+import Price from '../Price/Price';
 
 class ProductCard extends Component {
 
@@ -32,13 +32,9 @@ class ProductCard extends Component {
           width={300}
         />
         <h3 className={styles.productCardTitle}>{`${product.brand} ${product.name}`}</h3>
-        <h4 className={styles.price}>
-          <CurrencySymbol
-            className={styles.currencyValue}
-            currency={price.currency}
-          />
-          <div>{price.amount}</div>
-        </h4>
+        <Price
+          price={price}
+        />
         <button className={styles.buttonAddToCart}>
           <span className={styles.buttonAddToCartIcon}></span>
         </button>

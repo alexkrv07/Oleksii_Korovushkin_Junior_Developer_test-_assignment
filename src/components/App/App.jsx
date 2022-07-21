@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
+import ProductDescriptionPage from '../ProductDescriptionPage/ProductDescriptionPage';
 import ProductListPage from '../ProductListPage/ProductListPage';
 import './app.css';
 
@@ -18,6 +19,7 @@ class App extends Component {
   setActiveCategory = (category) => {
     this.setState({
       activeCategory: category,
+      productId: null
     });
   };
 
@@ -44,12 +46,21 @@ class App extends Component {
         />
         <main className="main">
           <div className="container">
-            <ProductListPage
-              category={this.state.activeCategory}
-              productId={this.props.productId}
-              activeCurrency={this.state.activeCurrency}
-              setProductId={this.setProductId}
-            />
+
+            {!this.state.productId &&
+              <ProductListPage
+                category={this.state.activeCategory}
+                productId={this.props.productId}
+                activeCurrency={this.state.activeCurrency}
+                setProductId={this.setProductId}
+              />
+            }
+
+            {this.state.productId &&
+              <ProductDescriptionPage
+                productId={this.state.productId}
+              />
+            }
 
           </div>
         </main>
