@@ -2,5 +2,48 @@
   margin: 0 0 0 0;
   padding: 80px 0 0 0;
   box-sizing: border-box;
-  background-color: coral;
+  /* background-color: coral; */
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.imageList {
+  width: 80px;
+  margin-right: 40px;
+}
+
+.mainImageWrp {
+  width: 610px;
+  margin-left: 40px;
+}
+
+.mainImage {
+  padding-bottom: 84%;
+}
+
+.productInfo {
+  width: 290px;
+  margin: 0 0 0 100px;
+  /* background-color: teal; */
+}
+
+.productInfo {
+  font-family: 'Raleway', sans-serif;
+  font-size: 27px;
+  color: #1D1F22;
+}
+
+.productBrand {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+.productName {
+  font-weight: 400;
+  margin: 15px 0 0 0;
 }

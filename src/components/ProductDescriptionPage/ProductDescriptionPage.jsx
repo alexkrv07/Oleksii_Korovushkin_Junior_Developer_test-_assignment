@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
+import Image from '../Image/Image';
 import styles from './styles.module.css';
+import ImageList from '../ImageList/ImageList';
 
 const GET_PRODUCT_BY_ID = gql`
   query GetProductById($id: String!) {
@@ -41,9 +43,14 @@ class ProductDescriptionPage extends Component {
   setActiveImage = (imageSrc) => {
     this.setState({
       activeImage: imageSrc,
-      productId: null
     });
   };
+
+  setInitialImage = (data) => {
+    const product = this.getProduct(data);
+    const gallery = product.gallery;
+    this.setActiveImage(gallery[0]);
+  }
 
   getProduct = (data) => {
     return data.product;
@@ -51,7 +58,6 @@ class ProductDescriptionPage extends Component {
 
   render() {
     const id = this.props.productId;
-    console.log(id);
     return (
       <div
         className={`${styles.productDescriptionPage} ${this.props.className ? this.props.className : ''}`}
@@ -59,7 +65,7 @@ class ProductDescriptionPage extends Component {
         <Query
           query={GET_PRODUCT_BY_ID}
           variables={ {id} }
-          // onCompleted={() => console.log(data)}
+          onCompleted={(data) => this.setInitialImage(data)}
         >
           {({ loading, error, data }) => {
             if (loading) {
@@ -70,18 +76,40 @@ class ProductDescriptionPage extends Component {
               return `Error! ${error}`;
             }
             const product = this.getProduct(data);
+            const gallery = product.gallery;
 
             return (
-              <div>
-                {console.log(product)}
-                {`${product}`}
+              <div
+                className={`${styles.wrapper} ${this.props.className ? this.props.className : ''}`}
+              >
+                <ImageList
+                  className={styles.imageList}
+                  gallery={gallery}
+                  alt={product.name}
+                  setActiveImage={this.setActiveImage}
+                />
+                <div className={styles.mainImageWrp}>
+                  <Image
+                    className={styles.mainImage}
+                    alt={product.name}
+                    src={this.state.activeImage}
+                  />
+                </div>
+                <div className={styles.productInfo}>
+                  <div className={styles.productTitle}>
+                    <h3 className={styles.productBrand}>{product.brand}</h3>
+                    <h4 className={styles.productName}>{product.name}</h4>
+                  </div>
+
+                </div>
+
               </div>
             );
           }}
         </Query>
-        <ul className={styles.imageList}>
+        {/* <ul className={styles.imageList}>
 
-        </ul>
+        </ul> */}
 
       </div>
     );
