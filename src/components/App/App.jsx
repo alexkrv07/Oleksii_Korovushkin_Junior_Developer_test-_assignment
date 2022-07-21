@@ -27,6 +27,12 @@ class App extends Component {
     });
   };
 
+  setProductId = (productId) => {
+    this.setState({
+      productId: productId,
+    });
+  }
+
   render() {
     return (
       <>
@@ -42,7 +48,9 @@ class App extends Component {
               category={this.state.activeCategory}
               productId={this.props.productId}
               activeCurrency={this.state.activeCurrency}
+              setProductId={this.setProductId}
             />
+
           </div>
         </main>
       </>

@@ -10,10 +10,10 @@ class ProductList extends Component {
           return (
             <ProductCard
               className={styles.productItem}
-              // className={`${styles.imageWrp} ${this.props.className ? this.props.className : ''}`}
               key={product.id}
               product={product}
               activeCurrency={this.props.activeCurrency}
+              setProductId={this.props.setProductId}
             />
           )})}
       </ul>

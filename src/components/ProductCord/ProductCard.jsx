@@ -9,7 +9,11 @@ class ProductCard extends Component {
     return this.props.product.prices.filter(price => {
       return  price.currency.label === this.props.activeCurrency.label;
     })[0];
-  }
+  };
+
+  goToPageProductDescriptionPage = () => {
+    this.props.setProductId(this.props.product.id);
+  };
 
   render() {
     const product = this.props.product;
@@ -18,8 +22,8 @@ class ProductCard extends Component {
 
     return (
       <li
-        // className={styles.productCard}
         className={`${styles.productCard} ${this.props.className ? this.props.className : ''} ${!isInStock ? styles.disable : ''}`}
+        onClick={this.goToPageProductDescriptionPage}
       >
         <Image
           className={styles.productCardImage}
