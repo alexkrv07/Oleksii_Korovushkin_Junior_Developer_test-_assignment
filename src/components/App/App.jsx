@@ -59,6 +59,7 @@ class App extends Component {
             {this.state.productId &&
               <ProductDescriptionPage
                 productId={this.state.productId}
+                activeCurrency={this.state.activeCurrency}
               />
             }
 

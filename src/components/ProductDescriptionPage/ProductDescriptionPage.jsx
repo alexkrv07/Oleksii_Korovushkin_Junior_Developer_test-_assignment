@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import parse from 'html-react-parser';
 import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
 import Image from '../Image/Image';
-import styles from './styles.module.css';
 import ImageList from '../ImageList/ImageList';
+import ProductAttributeSet from '../ProductAttributeSet/ProductAttributeSet';
+import Price from '../Price/Price';
+import styles from './styles.module.css';
 
 const GET_PRODUCT_BY_ID = gql`
   query GetProductById($id: String!) {
@@ -23,6 +26,8 @@ const GET_PRODUCT_BY_ID = gql`
         }
         description
         attributes {
+          id
+          type
           name
           items {
             id
@@ -40,6 +45,12 @@ class ProductDescriptionPage extends Component {
     activeImage: '',
   }
 
+  getPrice = (product) => {
+    return product.prices.filter(price => {
+      return  price.currency.label === this.props.activeCurrency.label;
+    })[0];
+  };
+
   setActiveImage = (imageSrc) => {
     this.setState({
       activeImage: imageSrc,
@@ -47,13 +58,9 @@ class ProductDescriptionPage extends Component {
   };
 
   setInitialImage = (data) => {
-    const product = this.getProduct(data);
-    const gallery = product.gallery;
+    const { product } = data;
+    const { gallery } = product;
     this.setActiveImage(gallery[0]);
-  }
-
-  getProduct = (data) => {
-    return data.product;
   }
 
   render() {
@@ -75,8 +82,11 @@ class ProductDescriptionPage extends Component {
             if (error) {
               return `Error! ${error}`;
             }
-            const product = this.getProduct(data);
-            const gallery = product.gallery;
+
+            const { product } = data;
+            const { gallery } = product;
+            const isAttributeSet = !!product.attributes.length;
+            const price = this.getPrice(product);
 
             return (
               <div
@@ -100,17 +110,34 @@ class ProductDescriptionPage extends Component {
                     <h3 className={styles.productBrand}>{product.brand}</h3>
                     <h4 className={styles.productName}>{product.name}</h4>
                   </div>
-
+                  {isAttributeSet &&
+                    <ProductAttributeSet
+                      className={styles.attributeSet}
+                      arrtibuteSet={product.attributes}
+                    />
+                  }
+                  <div className={styles.productPrice}>
+                    <h4 className={styles.productPriceTitle}>Price:</h4>
+                    <Price
+                      className={styles.productPriceAmount}
+                      price={price}
+                    />
+                  </div>
+                  <button
+                    className={styles.buttonAddToCart}
+                  >
+                    Add to Cart
+                  </button>
+                  <div
+                    className={styles.productDescription}
+                  >
+                    {parse(product.description)}
+                  </div>
                 </div>
-
               </div>
             );
           }}
         </Query>
-        {/* <ul className={styles.imageList}>
-
-        </ul> */}
-
       </div>
     );
   }
