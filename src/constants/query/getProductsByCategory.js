@@ -1,9 +1,12 @@
 import { gql } from '@apollo/client';
 
-export const GET_PRODUCT_BY_ID = gql`
-  query GetProductById($id: String!) {
-    product(id: $id) {
+export const GET_PRODUCTS_BY_CATEGORY = gql`
+  query GetProductsByCategory($input: CategoryInput) {
+    category (input: $input) {
+      name
+      products {
         id
+        name
         inStock
         brand
         gallery
@@ -15,17 +18,15 @@ export const GET_PRODUCT_BY_ID = gql`
           }
           amount
         }
-        description
         attributes {
-          id
-          type
           name
-          items {
+          items{
             id
             value
             displayValue
           }
         }
       }
+    }
   }
 `;

@@ -1,39 +1,8 @@
 import React, { Component } from 'react';
-import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
 import ProductList from '../ProductList/ProductList';
+import { GET_PRODUCTS_BY_CATEGORY } from '../../constants/query/getProductsByCategory';
 import styles from './styles.module.css';
-
-const GET_PRODUCTS_BY_CATEGORY = gql`
-  query GetProductsByCategory($input: CategoryInput) {
-    category (input: $input) {
-      name
-      products {
-        id
-        name
-        inStock
-        brand
-        gallery
-        category
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-        attributes {
-          name
-          items{
-            id
-            value
-            displayValue
-          }
-        }
-      }
-    }
-  }
-`;
 
 class ProductListPage extends Component {
 

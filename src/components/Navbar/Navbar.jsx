@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import MenuItem from '../MenuItem/MenuItem';
-import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
+import { GET_CATEGORIES } from '../../constants/query/getCategories';
 import styles from './styles.module.css';
-
-const GET_CATEGORIES = gql`
-  query GetCategories  {
-    categories {
-      name
-    }
-  }
-`;
 
 class Navbar extends Component {
 

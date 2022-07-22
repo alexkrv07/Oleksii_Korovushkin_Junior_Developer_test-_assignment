@@ -1,44 +1,12 @@
 import React, { Component } from 'react';
 import parse from 'html-react-parser';
-import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
 import Image from '../Image/Image';
 import ImageList from '../ImageList/ImageList';
 import ProductAttributeSet from '../ProductAttributeSet/ProductAttributeSet';
 import Price from '../Price/Price';
+import { GET_PRODUCT_BY_ID } from '../../constants/query/getProducrById';
 import styles from './styles.module.css';
-
-const GET_PRODUCT_BY_ID = gql`
-  query GetProductById($id: String!) {
-    product(id: $id) {
-        id
-        name
-        inStock
-        brand
-        gallery
-        category
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-        description
-        attributes {
-          id
-          type
-          name
-          items {
-            id
-            value
-            displayValue
-          }
-        }
-      }
-  }
-
-`;
 
 class ProductDescriptionPage extends Component {
   state = {
