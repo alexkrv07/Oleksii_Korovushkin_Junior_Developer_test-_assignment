@@ -11,6 +11,7 @@ import styles from './styles.module.css';
 class ProductDescriptionPage extends Component {
   state = {
     activeImage: '',
+    selectedAttributList: [],
   }
 
   getPrice = (product) => {
