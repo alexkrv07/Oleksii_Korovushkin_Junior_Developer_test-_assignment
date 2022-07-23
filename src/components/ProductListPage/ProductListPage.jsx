@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Query } from '@apollo/client/react/components';
-import ProductList from '../ProductList/ProductList';
+import ProductList from '../common/ProductList/ProductList';
 import { GET_PRODUCTS_BY_CATEGORY } from '../../constants/query/getProductsByCategory';
 import styles from './styles.module.css';
 

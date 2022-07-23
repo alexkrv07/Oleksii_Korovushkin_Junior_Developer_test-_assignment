@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Counter from '../common/Counter/Counter';
 import Header from '../Header/Header';
 import ProductDescriptionPage from '../ProductDescriptionPage/ProductDescriptionPage';
 import ProductListPage from '../ProductListPage/ProductListPage';
@@ -62,8 +63,11 @@ class App extends Component {
                 activeCurrency={this.state.activeCurrency}
               />
             }
-
+          <Counter
+            className="counter"
+          />
           </div>
+
         </main>
       </>
     );

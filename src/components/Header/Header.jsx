@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Logo from '../Logo/Logo';
-import Navbar from '../Navbar/Navbar';
-import CurrencySwitcher from '../CurrencySwitcher/CurrencySwitcher';
-import CartOverlay from '../CartOverLay/CartOverlay';
+import Logo from '../common/Logo/Logo';
+import Navbar from '../common/Navbar/Navbar';
+import CurrencySwitcher from '../common/CurrencySwitcher/CurrencySwitcher';
+import CartOverlay from '../common/CartOverLay/CartOverlay';
 import styles from './styles.module.css';
 
 class Header extends Component {

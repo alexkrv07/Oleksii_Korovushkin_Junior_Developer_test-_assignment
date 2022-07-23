@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import parse from 'html-react-parser';
 import { Query } from '@apollo/client/react/components';
-import Image from '../Image/Image';
-import ImageList from '../ImageList/ImageList';
-import ProductAttributeSet from '../ProductAttributeSet/ProductAttributeSet';
-import Price from '../Price/Price';
+import Image from '../common/Image/Image';
+import ImageList from '../common/ImageList/ImageList';
+import ProductAttributeSet from '../common/ProductAttributeSet/ProductAttributeSet';
+import Price from '../common/Price/Price';
 import { GET_PRODUCT_BY_ID } from '../../constants/query/getProducrById';
 import styles from './styles.module.css';
 

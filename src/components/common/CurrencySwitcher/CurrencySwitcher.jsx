@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Query } from '@apollo/client/react/components';
 import CurrencySymbol from '../CurrencySymbol/CurrencySymbol';
 import CurrencyList from '../CurrencyList/CurrencyList';
-import { GET_CURRENCIES } from '../../constants/query/getCurrencies';
+import { GET_CURRENCIES } from '../../../constants/query/getCurrencies';
 import styles from './styles.module.css';
 
 class CurrencySwitcher extends Component {

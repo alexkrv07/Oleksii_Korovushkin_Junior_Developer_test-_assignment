@@ -21,7 +21,7 @@
 .currencySelect {
   width: 10px;
   height: 20px;
-  background-image: url(../../assets/image/arrow_down.svg);
+  background-image: url(../../../assets/image/arrow_down.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -34,7 +34,7 @@
 
 
 .currencySelect.open {
-  background-image: url(../../assets/image/arrow_up.svg);
+  background-image: url(../../../assets/image/arrow_up.svg);
 }
 
 

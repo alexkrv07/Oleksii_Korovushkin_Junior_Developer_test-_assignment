@@ -14,7 +14,7 @@
 .cartButtonIcon {
   width: 20px;
   height: 20px;
-  background-image: url('../../assets/image/empty_cart.svg');
+  background-image: url('../../../assets/image/empty_cart.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

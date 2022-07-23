@@ -89,7 +89,7 @@
   margin: auto;
   width: 24px;
   height: 24px;
-  background-image: url('../../assets/image/empty_white_cart.svg');
+  background-image: url('../../../assets/image/empty_white_cart.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

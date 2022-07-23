@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MenuItem from '../MenuItem/MenuItem';
 import { Query } from '@apollo/client/react/components';
-import { GET_CATEGORIES } from '../../constants/query/getCategories';
+import { GET_CATEGORIES } from '../../../constants/query/getCategories';
 import styles from './styles.module.css';
 
 class Navbar extends Component {
