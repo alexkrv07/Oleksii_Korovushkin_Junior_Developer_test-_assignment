@@ -43,12 +43,12 @@ class ProductListPage extends Component {
                 products={products}
                 activeCurrency={this.props.activeCurrency}
                 setProductId={this.props.setProductId}
+                addProductToCart={this.props.addProductToCart}
               />
             );
           }}
         </Query>
       </div>
-
     );
   }
 }

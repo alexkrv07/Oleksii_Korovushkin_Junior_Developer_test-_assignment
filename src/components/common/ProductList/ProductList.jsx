@@ -16,6 +16,7 @@ class ProductList extends Component {
               product={product}
               activeCurrency={this.props.activeCurrency}
               setProductId={this.props.setProductId}
+              addProductToCart={this.props.addProductToCart}
             />
           )})}
       </ul>

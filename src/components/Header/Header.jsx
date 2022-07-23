@@ -22,7 +22,9 @@ class Header extends Component {
               activeCurrency={this.props.activeCurrency}
               setActiveCurrency={this.props.setActiveCurrency}
             />
-            <CartOverlay/>
+            <CartOverlay
+              productsInCart={this.props.productsInCart}
+            />
           </div>
         </div>
       </header>

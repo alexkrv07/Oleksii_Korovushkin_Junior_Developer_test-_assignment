@@ -10,7 +10,7 @@ class ButtonCartOverlay extends Component {
         onClick={this.props.handler}
       >
         <span className={styles.cartButtonIcon}></span>
-        { totalCartItems &&
+        { !!totalCartItems &&
             <span className={styles.cartButtonBadge}>{totalCartItems}</span>
         }
       </button>

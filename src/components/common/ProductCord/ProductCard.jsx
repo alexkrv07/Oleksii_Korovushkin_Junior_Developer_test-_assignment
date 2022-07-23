@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
 import Image from '../Image/Image';
-import styles from './styles.module.css';
 import Price from '../Price/Price';
+import { getPrice } from '../../../helpers/Product';
+import styles from './styles.module.css';
 
 class ProductCard extends Component {
-
-  getPrice = () => {
-    return this.props.product.prices.filter(price => {
-      return  price.currency.label === this.props.activeCurrency.label;
-    })[0];
-  };
 
   goToPageProductDescriptionPage = () => {
     this.props.setProductId(this.props.product.id);
   };
 
+  addProductToCart = (event) => {
+    event.stopPropagation();
+    const selectedAttributeList = []
+
+
+    const productToCart = {
+      ...this.props.product,
+      selectedAttributeList: selectedAttributeList,
+      count: 1
+    }
+    this.props.addProductToCart(productToCart);
+
+  }
+
   render() {
     const product = this.props.product;
-    const price = this.getPrice();
+    const price = getPrice(product, this.props.activeCurrency);
     const isInStock = this.props.product.inStock;
 
     return (
@@ -36,7 +45,11 @@ class ProductCard extends Component {
         <Price
           price={price}
         />
-        <button className={styles.buttonAddToCart}>
+        <button
+          className={styles.buttonAddToCart}
+          onClick={this.addProductToCart}
+
+        >
           <span className={styles.buttonAddToCartIcon}></span>
         </button>
         {!isInStock &&

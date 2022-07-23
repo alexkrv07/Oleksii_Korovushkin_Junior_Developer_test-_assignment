@@ -6,19 +6,14 @@ import ImageList from '../common/ImageList/ImageList';
 import ProductAttributeSet from '../common/ProductAttributeSet/ProductAttributeSet';
 import Price from '../common/Price/Price';
 import { GET_PRODUCT_BY_ID } from '../../constants/query/getProducrById';
+import { getPrice, isProductHasAttributes, isSelectedAllAttributes } from '../../helpers/Product';
 import styles from './styles.module.css';
 
 class ProductDescriptionPage extends Component {
   state = {
     activeImage: '',
-    selectedAttributList: [],
+    selectedAttributeList: [],
   }
-
-  getPrice = (product) => {
-    return product.prices.filter(price => {
-      return  price.currency.label === this.props.activeCurrency.label;
-    })[0];
-  };
 
   setActiveImage = (imageSrc) => {
     this.setState({
@@ -30,6 +25,17 @@ class ProductDescriptionPage extends Component {
     const { product } = data;
     const { gallery } = product;
     this.setActiveImage(gallery[0]);
+  }
+
+  addProductToCart = (product) => {
+    if (isSelectedAllAttributes(product, this.state.selectedAttributeList)) {
+      const productToCart = {
+        ...product,
+        selectedAttributeList: this.state.selectedAttributeList,
+        count: 1
+      }
+      this.props.addProductToCart(productToCart);
+    }
   }
 
   render() {
@@ -54,8 +60,7 @@ class ProductDescriptionPage extends Component {
 
             const { product } = data;
             const { gallery } = product;
-            const isAttributeSet = !!product.attributes.length;
-            const price = this.getPrice(product);
+            const price = getPrice(product, this.props.activeCurrency)
 
             return (
               <div
@@ -79,7 +84,7 @@ class ProductDescriptionPage extends Component {
                     <h3 className={styles.productBrand}>{product.brand}</h3>
                     <h4 className={styles.productName}>{product.name}</h4>
                   </div>
-                  {isAttributeSet &&
+                  {isProductHasAttributes(product) &&
                     <ProductAttributeSet
                       className={styles.attributeSet}
                       arrtibuteSet={product.attributes}
@@ -94,6 +99,7 @@ class ProductDescriptionPage extends Component {
                   </div>
                   <button
                     className={styles.buttonAddToCart}
+                    onClick={() => this.addProductToCart(product)}
                   >
                     Add to Cart
                   </button>

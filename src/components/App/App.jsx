@@ -10,10 +10,7 @@ class App extends Component {
   state = {
     activeCategory: '',
     activeCurrency: {},
-    cart: {
-      items: 0,
-      products: []
-    },
+    productsInCart: [],
     productId: null,
   }
 
@@ -36,6 +33,12 @@ class App extends Component {
     });
   }
 
+  addProductToCart = (product) => {
+    this.setState({
+      productsInCart: [...this.state.productsInCart, product]
+    });
+  };
+
   render() {
     return (
       <>
@@ -44,6 +47,7 @@ class App extends Component {
           activeCurrency={this.state.activeCurrency}
           setActiveCategory={this.setActiveCategory}
           setActiveCurrency={this.setActiveCurrency}
+          productsInCart={this.state.productsInCart}
         />
         <main className="main">
           <div className="container">
@@ -54,6 +58,7 @@ class App extends Component {
                 productId={this.props.productId}
                 activeCurrency={this.state.activeCurrency}
                 setProductId={this.setProductId}
+                addProductToCart={this.addProductToCart}
               />
             }
 
@@ -61,6 +66,7 @@ class App extends Component {
               <ProductDescriptionPage
                 productId={this.state.productId}
                 activeCurrency={this.state.activeCurrency}
+                addProductToCart={this.addProductToCart}
               />
             }
           <Counter

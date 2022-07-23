@@ -8,11 +8,18 @@ class CartOverlay extends Component {
     isOpen: false,
   }
 
+  getProductCounts = () => {
+    return this.props.productsInCart.reduce((result, product) => {
+      return result + product.count;
+    },0);
+  }
+
   render() {
+    const count = this.getProductCounts()
     return (
       <div className={`${styles.cartOverlayWrp} ${this.props.className ? this.props.className : ''}`}>
         <ButtonCartOverlay
-          items="1"
+          items={count}
         />
 
       </div>
