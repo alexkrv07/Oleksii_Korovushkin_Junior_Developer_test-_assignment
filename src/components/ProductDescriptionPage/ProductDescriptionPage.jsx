@@ -6,7 +6,7 @@ import ImageList from '../common/ImageList/ImageList';
 import ProductAttributeSet from '../common/ProductAttributeSet/ProductAttributeSet';
 import Price from '../common/Price/Price';
 import { GET_PRODUCT_BY_ID } from '../../constants/query/getProducrById';
-import { getPrice, isProductHasAttributes, isSelectedAllAttributes } from '../../helpers/Product';
+import { getPrice, isProductHasAttributes, isSelectedAllAttributes, setInitialtAttributes } from '../../helpers/Product';
 import styles from './styles.module.css';
 
 class ProductDescriptionPage extends Component {
@@ -25,6 +25,24 @@ class ProductDescriptionPage extends Component {
     const { product } = data;
     const { gallery } = product;
     this.setActiveImage(gallery[0]);
+  }
+
+  setInitialSelectedAttributes = (data) => {
+    this.setState({
+      selectedAttributeList: setInitialtAttributes(data.product)
+    });
+  }
+
+  setSelectedAttributes = (selectedAttribute) => {
+    const updatedAttributeList = [...this.state.selectedAttributeList];
+    updatedAttributeList.forEach(attributeSet => {
+      if (attributeSet.name === selectedAttribute.name) {
+        attributeSet.id = selectedAttribute.id
+      }
+    });
+    this.setState({
+      selectedAttributeList: [...updatedAttributeList]
+    });
   }
 
   addProductToCart = (product) => {
@@ -47,7 +65,10 @@ class ProductDescriptionPage extends Component {
         <Query
           query={GET_PRODUCT_BY_ID}
           variables={ {id} }
-          onCompleted={(data) => this.setInitialImage(data)}
+          onCompleted={(data) => {
+            this.setInitialImage(data);
+            this.setInitialSelectedAttributes(data)
+          }}
         >
           {({ loading, error, data }) => {
             if (loading) {
@@ -88,6 +109,8 @@ class ProductDescriptionPage extends Component {
                     <ProductAttributeSet
                       className={styles.attributeSet}
                       arrtibuteSet={product.attributes}
+                      selectedAttributeList={this.state.selectedAttributeList}
+                      updateAttributeList={this.setSelectedAttributes}
                     />
                   }
                   <div className={styles.productPrice}>

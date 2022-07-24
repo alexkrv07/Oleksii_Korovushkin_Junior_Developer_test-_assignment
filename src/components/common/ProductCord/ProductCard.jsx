@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Image from '../Image/Image';
 import Price from '../Price/Price';
-import { getPrice } from '../../../helpers/Product';
+import { getPrice, setInitialtAttributes } from '../../../helpers/Product';
 import styles from './styles.module.css';
 
 class ProductCard extends Component {
@@ -12,8 +12,7 @@ class ProductCard extends Component {
 
   addProductToCart = (event) => {
     event.stopPropagation();
-    const selectedAttributeList = []
-
+    const selectedAttributeList = setInitialtAttributes(this.props.product);
 
     const productToCart = {
       ...this.props.product,
@@ -21,7 +20,6 @@ class ProductCard extends Component {
       count: 1
     }
     this.props.addProductToCart(productToCart);
-
   }
 
   render() {

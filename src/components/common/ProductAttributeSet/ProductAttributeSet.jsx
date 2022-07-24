@@ -15,6 +15,8 @@ class ProductAttributeSet extends Component {
               key={attributeList.id}
               className={styles.attrbuteList}
               arrtibuteList={attributeList}
+              selectedAttributeList={this.props.selectedAttributeList}
+              updateAttributeList={this.props.updateAttributeList}
             />
           )
         })}

@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import { getSelectedAttributeId } from '../../../helpers/Product';
+import ProductAttributeItem from '../ProductAttributeItem/ProductAttributeItem';
 import styles from './styles.module.css';
 
 class ProductAttributeList extends Component {
+  updateAttributeList = (id) => {
+    const { name } = this.props.arrtibuteList
+    this.props.updateAttributeList({
+      id,
+      name
+    })
+  }
+
   render() {
     const { type, name, items } = this.props.arrtibuteList;
+    let selectedAttributeId  = '';
+
+    if (this.props.selectedAttributeList.length) {
+      selectedAttributeId = getSelectedAttributeId(this.props.selectedAttributeList, name);
+    }
 
     return (
       <div className={`${styles.attributeListWrp} ${this.props.className ? this.props.className : ''}`}
@@ -14,32 +29,21 @@ class ProductAttributeList extends Component {
         <ul
           className={styles.attributeList}
         >
-          {type === 'text'
-            ? items.map(attribute => {
+          {
+            items.map(attribute => {
               return (
-                <li
-                  className={styles.attributeItemText}
+                <ProductAttributeItem
                   key={attribute.id}
-                >
-                  {attribute.value}
-                </li>
-              )
-            })
-            : items.map(attribute => {
-              return (
-                <li
-                  className={styles.attributeItemSwatch}
-                  key={attribute.id}
-                  style={{backgroundColor: attribute.value}}
-                >
-                </li>
+                  type={type}
+                  attribute={attribute}
+                  selectedAttributeId={selectedAttributeId}
+                  updateAttributeList={this.updateAttributeList}
+                />
               )
             })
           }
         </ul>
       </div>
-
-
     );
   }
 }
