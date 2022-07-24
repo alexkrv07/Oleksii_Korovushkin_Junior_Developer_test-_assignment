@@ -16,7 +16,7 @@ class ProductCard extends Component {
 
     const productToCart = {
       ...this.props.product,
-      selectedAttributeList: selectedAttributeList,
+      selectedAttributeList,
       count: 1
     }
     this.props.addProductToCart(productToCart);

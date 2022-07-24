@@ -14,12 +14,17 @@ class CartOverlay extends Component {
     },0);
   }
 
+  handlerOnClick = () => {
+    console.log(this.props.productsInCart)
+  }
+
   render() {
     const count = this.getProductCounts()
     return (
       <div className={`${styles.cartOverlayWrp} ${this.props.className ? this.props.className : ''}`}>
         <ButtonCartOverlay
           items={count}
+          handler={this.handlerOnClick }
         />
 
       </div>

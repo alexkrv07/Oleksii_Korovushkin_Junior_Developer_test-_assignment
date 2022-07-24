@@ -3,6 +3,7 @@ import Counter from '../common/Counter/Counter';
 import Header from '../Header/Header';
 import ProductDescriptionPage from '../ProductDescriptionPage/ProductDescriptionPage';
 import ProductListPage from '../ProductListPage/ProductListPage';
+import { getProductWithSameAttributesInCart } from '../../helpers/Product';
 import './app.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
     activeCurrency: {},
     productsInCart: [],
     productId: null,
+    // selectedAttributeList: [],
   }
 
   setActiveCategory = (category) => {
@@ -33,10 +35,26 @@ class App extends Component {
     });
   }
 
+  // setSelectedAttributes = (selectedAttributes) => {
+  //  this.setState({
+  //     selectedAttributeList: selectedAttributes
+  //   });
+  // }
+
   addProductToCart = (product) => {
+    const productsInCart = [...this.state.productsInCart];
+    const productInCartWithSameAttributes = getProductWithSameAttributesInCart(productsInCart, product);
+
+    if (!productInCartWithSameAttributes) {
+      productsInCart.push(product);
+     } else {
+      productInCartWithSameAttributes.count += 1;
+    }
+
     this.setState({
-      productsInCart: [...this.state.productsInCart, product]
+      productsInCart: [...productsInCart]
     });
+
   };
 
   render() {
@@ -67,6 +85,8 @@ class App extends Component {
                 productId={this.state.productId}
                 activeCurrency={this.state.activeCurrency}
                 addProductToCart={this.addProductToCart}
+                // setSelectedAttributes={this.setSelectedAttributes}
+                // selectedAttributeList={this.state.selectedAttributeList}
               />
             }
           <Counter

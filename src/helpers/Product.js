@@ -9,14 +9,17 @@
     return !!product.attributes.length;
   }
 
+  const getAttributeNameList = (attributes) => {
+    return attributes.map(attributeSet => attributeSet.name);
+  }
+
   const isSelectedAllAttributes = (product, selectedAttributeList) => {
     if (!isProductHasAttributes(product)) {
       return true;
     }
 
-    const productAttributeNameList = product.attributes.map(attributeSet => attributeSet.name);
-    const selectedAttributeNameList = selectedAttributeList.map(attributeSet => attributeSet.name);
-    console.log(productAttributeNameList, selectedAttributeNameList)
+    const productAttributeNameList = getAttributeNameList(product.attributes);
+    const selectedAttributeNameList = getAttributeNameList(selectedAttributeList)
 
     return productAttributeNameList.every(
       attributeName => selectedAttributeNameList.includes(attributeName)
@@ -53,6 +56,38 @@
     return updatedAttributeList;
   }
 
+  const getProductsFromCartWithSameId = (productsInCart, product) => {
+    return productsInCart.filter(productInCart => {
+      return productInCart.id === product.id;
+    })
+  }
+
+  // const
+
+  const isProductsHasSameSelectedAttributes = (productInCart, product) => {
+    // const attributeNameList = getAttributeNameList(productInCart.attributes);
+    // return attributeNameList.every(name => {
+    //   return productInCart.attributes[name] ===  product.attributes[name];
+    // })
+    return productInCart.selectedAttributeList.every(selectedAttribute => {
+      const productAttributeSameName = product.selectedAttributeList.find(attribute => {
+        return attribute.name === selectedAttribute.name;
+      })
+      return selectedAttribute.id === productAttributeSameName.id;
+    })
+  }
+
+  const getProductWithSameAttributesInCart = (productsInCart, product) => {
+    const productsWithSameId = getProductsFromCartWithSameId(productsInCart, product);
+    if (!productsWithSameId.length) {
+      return null;
+    }
+    console.log( productsWithSameId)
+    return productsWithSameId.find(prodctWithSameId => {
+      return isProductsHasSameSelectedAttributes(prodctWithSameId, product)
+    });
+  }
+
 
 export {
   getPrice,
@@ -60,5 +95,6 @@ export {
   isSelectedAllAttributes,
   setInitialtAttributes,
   getSelectedAttributeId,
-  updateAttributeList
+  updateAttributeList,
+  getProductWithSameAttributesInCart
 };
