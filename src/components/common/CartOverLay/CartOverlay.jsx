@@ -38,8 +38,16 @@ class CartOverlay extends Component {
                 isOverlay={true}
               />
               <div className={styles.bntBlock}>
-                <button></button>
-                <button></button>
+                <button
+                  className={styles.btnBag}
+                >
+                  Wiew bag
+                </button>
+                <button
+                  className={styles.btnCheckout}
+                >
+                  Checkout
+                </button>
               </div>
             </div>
         )}
