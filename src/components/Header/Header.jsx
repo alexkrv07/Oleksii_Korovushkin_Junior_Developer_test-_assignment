@@ -24,6 +24,9 @@ class Header extends Component {
             />
             <CartOverlay
               productsInCart={this.props.productsInCart}
+              toggleOverlay={this.props.toggleOverlay}
+              isOverlay={this.props.isOverlay}
+              activeCurrency={this.props.activeCurrency}
             />
           </div>
         </div>

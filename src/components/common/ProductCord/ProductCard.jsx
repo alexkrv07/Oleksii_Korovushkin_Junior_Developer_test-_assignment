@@ -41,6 +41,7 @@ class ProductCard extends Component {
         />
         <h3 className={styles.productCardTitle}>{`${product.brand} ${product.name}`}</h3>
         <Price
+          className={styles.productPrice}
           price={price}
         />
         <button

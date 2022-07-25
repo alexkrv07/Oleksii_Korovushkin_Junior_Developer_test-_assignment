@@ -62,13 +62,8 @@
     })
   }
 
-  // const
 
   const isProductsHasSameSelectedAttributes = (productInCart, product) => {
-    // const attributeNameList = getAttributeNameList(productInCart.attributes);
-    // return attributeNameList.every(name => {
-    //   return productInCart.attributes[name] ===  product.attributes[name];
-    // })
     return productInCart.selectedAttributeList.every(selectedAttribute => {
       const productAttributeSameName = product.selectedAttributeList.find(attribute => {
         return attribute.name === selectedAttribute.name;
@@ -88,6 +83,28 @@
     });
   }
 
+  const getTotalPrice = (productList, activeCurrency) => {
+    const totalPrice = productList.reduce((result, product) => {
+      const productPrice = getPrice(product, activeCurrency)
+      return result + productPrice.amount * product.count;
+    },0);
+
+    return {
+      amount: Math.round(totalPrice * 100) / 100,
+      currency: activeCurrency
+    }
+  }
+
+ const getProductsTotalCount = (product) => {
+    return product.reduce((result, product) => {
+      return result + product.count;
+    },0);
+  }
+
+
+  const getTotalTax = (total, tax) => {
+    return Math.round(total * tax) / 100;
+  }
 
 export {
   getPrice,
@@ -96,5 +113,8 @@ export {
   setInitialtAttributes,
   getSelectedAttributeId,
   updateAttributeList,
-  getProductWithSameAttributesInCart
+  getProductWithSameAttributesInCart,
+  getTotalPrice,
+  getProductsTotalCount,
+  getTotalTax
 };

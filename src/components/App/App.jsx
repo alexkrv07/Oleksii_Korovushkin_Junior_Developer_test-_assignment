@@ -13,7 +13,7 @@ class App extends Component {
     activeCurrency: {},
     productsInCart: [],
     productId: null,
-    // selectedAttributeList: [],
+    isOverlay: false
   }
 
   setActiveCategory = (category) => {
@@ -35,12 +35,6 @@ class App extends Component {
     });
   }
 
-  // setSelectedAttributes = (selectedAttributes) => {
-  //  this.setState({
-  //     selectedAttributeList: selectedAttributes
-  //   });
-  // }
-
   addProductToCart = (product) => {
     const productsInCart = [...this.state.productsInCart];
     const productInCartWithSameAttributes = getProductWithSameAttributesInCart(productsInCart, product);
@@ -54,8 +48,13 @@ class App extends Component {
     this.setState({
       productsInCart: [...productsInCart]
     });
-
   };
+
+  toggleOverlay = () => {
+    this.setState({
+      isOverlay: !this.state.isOverlay
+    });
+  }
 
   render() {
     return (
@@ -66,8 +65,12 @@ class App extends Component {
           setActiveCategory={this.setActiveCategory}
           setActiveCurrency={this.setActiveCurrency}
           productsInCart={this.state.productsInCart}
+          toggleOverlay={this.toggleOverlay}
+          isOverlay={this.state.isOverlay}
         />
         <main className="main">
+          {this.state.isOverlay && <div className="overlay"></div>}
+
           <div className="container">
 
             {!this.state.productId &&

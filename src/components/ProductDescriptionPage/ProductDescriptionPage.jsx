@@ -13,6 +13,7 @@ class ProductDescriptionPage extends Component {
   state = {
     activeImage: '',
     selectedAttributeList: [],
+    // productToCart: {}
   }
 
   setActiveImage = (imageSrc) => {
@@ -28,9 +29,9 @@ class ProductDescriptionPage extends Component {
   }
 
   setInitialSelectedAttributes = (data) => {
-    // this.props.setSelectedAttributes(setInitialtAttributes(data.product));
+    const initialAttributeList = setInitialtAttributes(data.product);
     this.setState({
-      selectedAttributeList: setInitialtAttributes(data.product)
+      selectedAttributeList: initialAttributeList,
     });
   }
 
@@ -41,9 +42,8 @@ class ProductDescriptionPage extends Component {
         attributeSet.id = selectedAttribute.id
       }
     });
-    // this.props.setSelectedAttributes(updatedAttributeList)
     this.setState({
-      selectedAttributeList: [...updatedAttributeList]
+      selectedAttributeList: [...updatedAttributeList],
     });
   }
 
@@ -55,14 +55,9 @@ class ProductDescriptionPage extends Component {
         selectedAttributeList,
         count: 1
       }
-      this.props.addProductToCart(productToCart);
-      this.forceUpdate();
+      this.props.addProductToCart( productToCart );
     }
   }
-
-  // componentWillUnmount = () => {
-  //   this.props.setSelectedAttributes([]);
-  // }
 
   render() {
     const id = this.props.productId;
