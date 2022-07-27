@@ -7,18 +7,36 @@ class ProductAttributeItem extends Component {
     const isActive = this.props.selectedAttributeId === this.props.attribute.id;
     const isSwatch = this.props.type === 'swatch';
 
-    const mainStyle = isSwatch ? styles.attributeItemSwatch : styles.attributeItemText;
+    let mainStyle = '';
+    if (this.props.isOverlay) {
+      mainStyle += isSwatch ? ' ' + styles.attributeItemSwatchOverlay : ' ' + styles.attributeItemTextOverLay;
+    } else if (this.props.isCart) {
+      mainStyle += isSwatch ? ' ' + styles.attributeItemSwatchCart : ' ' + styles.attributeItemTextCart;
+    } else {
+      mainStyle += isSwatch ? ' ' + styles.attributeItemSwatch : ' ' + styles.attributeItemText;
+    }
+
     const activeStyle = isActive ? styles.active : '';
     const styleAttributeItem = `${mainStyle} ${activeStyle} ${this.props.className ? this.props.className : ''}`;
+
+    if (isSwatch) {
+      return (
+        <li
+          className={styleAttributeItem}
+          key={id}
+          style={{backgroundColor: value }}
+          onClick={() => this.props.updateAttributeList(id)}
+        />
+      )
+    }
 
     return (
       <li
         className={styleAttributeItem}
         key={id}
-        style={{backgroundColor: isSwatch ? value : ''}}
         onClick={() => this.props.updateAttributeList(id)}
       >
-        {!isSwatch && value}
+        {value}
       </li>
     )
   }

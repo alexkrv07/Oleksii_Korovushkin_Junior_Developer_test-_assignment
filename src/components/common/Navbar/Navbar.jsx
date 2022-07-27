@@ -20,7 +20,10 @@ class Navbar extends Component {
     const activeCategory = this.props.activeCategory;
 
     return (
-      <nav className={styles.nav}>
+      <nav
+      className={`${styles.nav} ${this.props.className ? this.props.className : ''}`}
+      // className={styles.nav}
+      >
         <ul className={styles.menuList}>
           <Query
             query={GET_CATEGORIES}

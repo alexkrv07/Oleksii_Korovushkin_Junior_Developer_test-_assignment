@@ -9,16 +9,16 @@ class Counter extends Component {
       >
         <button
           className={`${styles.counterBtn} ${styles.btnIncrement}`}
-          onClick={ this.props.increment }
+          onClick={ this.props.incrementCount }
         />
         <div
           className={styles.counerValue}
         >
-          {this.props.count}5
+          {this.props.count}
         </div>
         <button
           className={`${styles.counterBtn} ${styles.btnDecrement}`}
-          onClick={ this.props.decrement }
+          onClick={ this.props.decrementCount }
           />
       </div>
     );

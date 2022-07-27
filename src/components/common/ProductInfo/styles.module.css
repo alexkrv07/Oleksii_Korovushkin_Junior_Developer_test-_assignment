@@ -1,0 +1,78 @@
+.productInfoOverlay,
+.productInfoCart {
+  margin: 0;
+  padding: 0;
+}
+
+.productInfoOverlay {
+  max-width: 150px;
+  overflow: hidden;
+}
+
+.productInfoOverlay .productBrand,
+.productInfoOverlay .productName,
+.productInfoCart .productBrand,
+.productInfoCart .productName {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1D1F22;
+}
+
+.productInfoOverlay .productBrand,
+.productInfoOverlay .productName {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.productInfoCart .productBrand,
+.productInfoCart .productName {
+  font-size: 30x;
+}
+
+.productInfoCart .productBrand {
+  font-weight: 600;
+}
+
+.productInfoCart .productName {
+  margin-top: 15px;
+  font-weight: 400;
+}
+
+.productInfoOverlay .productPriceTitle,
+.productInfoCart .productPriceTitle {
+  display: none;
+}
+
+.productInfoOverlay .productPriceAmount,
+.productInfoCart .productPriceAmoun {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
+.productInfoOverlay .productPriceAmount {
+  font-weight: 500;
+  font-weight: 16px;
+  margin-top: 5px;
+}
+
+.productInfoCart .productPriceAmount {
+  font-weight: 700;
+  font-weight: 24px;
+  margin-top: 20px;
+}
+
+.productInfoOverlay .attributeSet {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-weight: 14px;
+  margin: 10px 0 0 0;
+}
+
+.productInfoCart .attributeSet {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 20px 0 0 0;
+}

@@ -20,6 +20,7 @@ export const GET_PRODUCTS_BY_CATEGORY = gql`
         }
         attributes {
           name
+          type
           items{
             id
             value

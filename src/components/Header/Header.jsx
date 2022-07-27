@@ -17,17 +17,24 @@ class Header extends Component {
               setActiveCategory={this.props.setActiveCategory}
             ></Navbar>
             <Logo className={styles.logo}/>
-            <CurrencySwitcher
-              className={styles.curencySwitcher}
-              activeCurrency={this.props.activeCurrency}
-              setActiveCurrency={this.props.setActiveCurrency}
-            />
-            <CartOverlay
-              productsInCart={this.props.productsInCart}
-              toggleOverlay={this.props.toggleOverlay}
-              isOverlay={this.props.isOverlay}
-              activeCurrency={this.props.activeCurrency}
-            />
+            <div className={styles.rightBlock}>
+              <CurrencySwitcher
+                className={styles.curencySwitcher}
+                activeCurrency={this.props.activeCurrency}
+                setActiveCurrency={this.props.setActiveCurrency}
+              />
+              <CartOverlay
+                productsInCart={this.props.productsInCart}
+                toggleOverlay={this.props.toggleOverlay}
+                isOverlay={this.props.isOverlay}
+                activeCurrency={this.props.activeCurrency}
+                selectedAttributeList={this.props.selectedAttributeList}
+                incrementProductCount={this.props.incrementProductCount}
+                decrementProductCount={this.props.decrementProductCount}
+                toggleIsCart={this.props.toggleIsCart}
+              />
+            </div>
+
           </div>
         </div>
       </header>

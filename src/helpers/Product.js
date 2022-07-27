@@ -77,7 +77,6 @@
     if (!productsWithSameId.length) {
       return null;
     }
-    console.log( productsWithSameId)
     return productsWithSameId.find(prodctWithSameId => {
       return isProductsHasSameSelectedAttributes(prodctWithSameId, product)
     });

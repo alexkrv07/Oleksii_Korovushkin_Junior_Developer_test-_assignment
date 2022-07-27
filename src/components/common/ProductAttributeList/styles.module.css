@@ -1,4 +1,6 @@
-.attributeListWrp {
+.attributeListWrp,
+.attributeListWrpCart,
+.attributeListWrpOverlay {
   margin: 0;
   padding: 0;
   color: #1D1F22;
@@ -14,8 +16,27 @@
 
 .attributeList {
   display: flex;
-  margin: 8px 0 0 0;
+  margin: 10px 0 0 0;
   padding: 0;
   list-style: none;
-  gap: 8px;
+}
+
+.attributeListWrpOverlay .attributeTitle {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.attributeListWrpOverlay .attributeList {
+  margin: 8px 0 0 0;
+}
+
+.attributeListWrpCart .attributeTitle {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.attributeListWrpOverlay .attributeList {
+  margin: 10px 0 0 0;
 }

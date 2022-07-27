@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
 }
@@ -19,4 +19,25 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin: 0;
+}
+
+/* .navbar {
+  justify-content: start;
+} */
+
+.curencySwitcher {
+  margin-left: auto;
+}
+
+.navbar,
+.rightBlock {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.rightBlock  {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }

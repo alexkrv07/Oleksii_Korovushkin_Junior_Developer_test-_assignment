@@ -13,6 +13,15 @@ class ProductAttributeList extends Component {
   }
 
   render() {
+    let mainStyle = `${this.props.className ? this.props.className : ''}`;
+    if (this.props.isOverlay) {
+      mainStyle += ' ' + styles.attributeListWrpOverlay;
+    } else if (this.props.isCart) {
+      mainStyle += ' ' + styles.attributeListWrpCart;
+    } else {
+      mainStyle += ' ' + styles.attributeListWrp;
+    }
+
     const { type, name, items } = this.props.arrtibuteList;
     let selectedAttributeId  = '';
 
@@ -21,7 +30,7 @@ class ProductAttributeList extends Component {
     }
 
     return (
-      <div className={`${styles.attributeListWrp} ${this.props.className ? this.props.className : ''}`}
+      <div className={mainStyle}
       >
         <h4 className={styles.attributeTitle}>
           {`${name} :`}
@@ -38,6 +47,8 @@ class ProductAttributeList extends Component {
                   attribute={attribute}
                   selectedAttributeId={selectedAttributeId}
                   updateAttributeList={this.updateAttributeList}
+                  isOverlay={this.props.isOverlay}
+                  isCart={this.props.isCart}
                 />
               )
             })
