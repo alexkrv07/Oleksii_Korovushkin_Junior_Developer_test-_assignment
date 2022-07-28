@@ -1,6 +1,12 @@
 .header {
   margin: 0;
   padding: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background-color: #fff;
 }
 
 .header .container {
@@ -22,10 +28,6 @@
   margin: 0;
 }
 
-/* .navbar {
-  justify-content: start;
-} */
-
 .curencySwitcher {
   margin-left: auto;
 }
@@ -40,4 +42,5 @@
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  height: 100%;
 }

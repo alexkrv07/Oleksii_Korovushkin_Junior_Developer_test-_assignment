@@ -3,6 +3,7 @@ import Image from '../Image/Image';
 import Counter from '../Counter/Counter';
 import styles from './styles.module.css';
 import ProductInfo from '../ProductInfo/ProductInfo';
+import ImageSlider from '../ImageSlider/ImageSlider';
 
 class CartItem extends Component {
   incrementProductCount = () => {
@@ -51,13 +52,11 @@ class CartItem extends Component {
         }
 
         { this.props.isCart && (
-          <div className={styles.mainImageWrp}>
-            <Image
-              className={styles.mainImage}
-              alt={name}
-              src={gallery[0]}
-            />
-          </div>
+          <ImageSlider
+            className={styles.imageSlider}
+            gallery={this.props.product.gallery}
+            alt={this.props.product.name}
+          />
         )
       }
       </li>

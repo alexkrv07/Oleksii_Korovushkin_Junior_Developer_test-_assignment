@@ -18,10 +18,10 @@
 }
 
 .mainImageWrp {
+  position: relative;
   box-sizing: border-box;
   width: 200px;
   margin-left: 25px;
-
 }
 
 .mainImage {

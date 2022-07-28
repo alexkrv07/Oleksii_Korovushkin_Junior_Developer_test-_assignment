@@ -3,6 +3,7 @@ import { Query } from '@apollo/client/react/components';
 import ProductList from '../common/ProductList/ProductList';
 import { GET_PRODUCTS_BY_CATEGORY } from '../../constants/query/getProductsByCategory';
 import styles from './styles.module.css';
+import ImageSlider from '../common/ImageSlider/ImageSlider';
 
 class ProductListPage extends Component {
 
@@ -38,13 +39,20 @@ class ProductListPage extends Component {
             const products = this.getProducts(data);
 
             return (
+              <>
+                <ProductList
+                  products={products}
+                  activeCurrency={this.props.activeCurrency}
+                  setProductId={this.props.setProductId}
+                  addProductToCart={this.props.addProductToCart}
+                />
+                <ImageSlider
+                  gallery={products[0].gallery}
+                  alt={products[0].name}
+                />
+              </>
 
-              <ProductList
-                products={products}
-                activeCurrency={this.props.activeCurrency}
-                setProductId={this.props.setProductId}
-                addProductToCart={this.props.addProductToCart}
-              />
+
             );
           }}
         </Query>

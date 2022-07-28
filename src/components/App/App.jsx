@@ -89,13 +89,14 @@ class App extends Component {
       isOverlay: isOverlay
     });
     this.removeProductsWithCountZero();
+
   }
 
   toggleIsCart = (isCart) => {
     this.setState({
       isCart: isCart
     });
-    this.removeProductsWithCountZero();
+        this.removeProductsWithCountZero();
   }
 
   render() {
@@ -113,7 +114,9 @@ class App extends Component {
           decrementProductCount={this.decrementProductCount}
           toggleIsCart={this.toggleIsCart}
         />
-        <main className="main">
+        <main
+          className={!this.state.isOverlay ? "main": "main oveflowHidden"}
+        >
           {this.state.isOverlay && <div className="overlay"></div>}
 
           <div className="container">
