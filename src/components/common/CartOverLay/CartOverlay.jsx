@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ButtonCartOverlay from '../ButtonCartOverlay/ButtonCartOverlay';
 import TotalPrice from '../TotalPrice/TotalPrice';
 import { getProductsTotalCount } from '../../../helpers/Product';
@@ -23,8 +24,6 @@ class CartOverlay extends Component {
     this.props.toggleOverlay(false);
     this.props.toggleIsCart(true);
   }
-
-
 
   render() {
     const count = getProductsTotalCount(this.props.productsInCart);
@@ -67,12 +66,18 @@ class CartOverlay extends Component {
                 isOverlay={true}
               />
               <div className={styles.bntBlock}>
-                <button
+                <Link
                   className={styles.btnBag}
+                  to={`/cart`}
                   onClick={this.handlerViewBag}
                 >
+                {/* <button
+                  className={styles.btnBag}
+                  onClick={this.handlerViewBag}
+                > */}
                   Wiew bag
-                </button>
+                {/* </button> */}
+                </Link>
                 <button
                   className={styles.btnCheckout}
                   onClick={this.handlerCheckout}

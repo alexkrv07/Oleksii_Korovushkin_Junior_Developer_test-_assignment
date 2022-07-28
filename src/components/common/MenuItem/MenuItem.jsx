@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './styles.module.css';
 
 class MenuItem extends Component {
@@ -16,7 +17,12 @@ class MenuItem extends Component {
         }
         onClick={this.setActiveCategory}
       >
-        {this.props.category}
+        <Link
+          className={styles.link}
+          to={`/${this.props.category}`}
+        >
+          {this.props.category}
+        </Link>
       </li>
     );
   }

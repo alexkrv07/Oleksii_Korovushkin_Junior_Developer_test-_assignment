@@ -52,13 +52,13 @@ class CartItem extends Component {
         }
 
         { this.props.isCart && (
-          <ImageSlider
-            className={styles.imageSlider}
-            gallery={this.props.product.gallery}
-            alt={this.props.product.name}
-          />
-        )
-      }
+            <ImageSlider
+              className={styles.imageSlider}
+              gallery={this.props.product.gallery}
+              alt={this.props.product.name}
+            />
+          )
+        }
       </li>
     );
   }

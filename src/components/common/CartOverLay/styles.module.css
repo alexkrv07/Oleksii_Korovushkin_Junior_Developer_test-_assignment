@@ -60,6 +60,7 @@ background-color: #000;
 
 .btnBag,
 .btnCheckout {
+  text-decoration: none;
   width: 140px;
   height: 45px;
   box-sizing: border-box;
@@ -84,6 +85,7 @@ background-color: #000;
   color: #1D1F22;
   background-color: transparent;
   border: 1px solid #1D1F22;
+  text-decoration: none;
 }
 
 .btnCheckout {

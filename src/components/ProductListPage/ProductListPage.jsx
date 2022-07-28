@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { useParams, } from 'react-router-dom';
 import { Query } from '@apollo/client/react/components';
 import ProductList from '../common/ProductList/ProductList';
 import { GET_PRODUCTS_BY_CATEGORY } from '../../constants/query/getProductsByCategory';
 import styles from './styles.module.css';
-import ImageSlider from '../common/ImageSlider/ImageSlider';
+import Page404 from '../Page404/Page404';
+
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />
+}
+
 
 class ProductListPage extends Component {
 
@@ -12,12 +18,22 @@ class ProductListPage extends Component {
   };
 
   render() {
-    if (!this.props.activeCurrency) {
-      return
+
+    let { category } = this.props.params;
+    if (!category) {
+      category = "all";
     }
+
+    if (category && !this.props.category.includes(category) ) {
+      return (
+        <Page404/>
+      )
+    }
+
     const input = {
-      title: this.props.category,
+      title: category,
     }
+
     return (
       <div
         className={`${styles.productPage} ${this.props.className ? this.props.className : ''}`}
@@ -39,20 +55,12 @@ class ProductListPage extends Component {
             const products = this.getProducts(data);
 
             return (
-              <>
-                <ProductList
-                  products={products}
-                  activeCurrency={this.props.activeCurrency}
-                  setProductId={this.props.setProductId}
-                  addProductToCart={this.props.addProductToCart}
-                />
-                <ImageSlider
-                  gallery={products[0].gallery}
-                  alt={products[0].name}
-                />
-              </>
-
-
+              <ProductList
+                products={products}
+                activeCurrency={this.props.activeCurrency}
+                setProductId={this.props.setProductId}
+                addProductToCart={this.props.addProductToCart}
+              />
             );
           }}
         </Query>
@@ -61,4 +69,4 @@ class ProductListPage extends Component {
   }
 }
 
-export default ProductListPage;
+export default withParams(ProductListPage);

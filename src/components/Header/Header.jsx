@@ -15,6 +15,7 @@ class Header extends Component {
               className={styles.navbar}
               activeCategory={this.props.activeCategory}
               setActiveCategory={this.props.setActiveCategory}
+              setCategories={this.props.setCategories}
             ></Navbar>
             <Logo className={styles.logo}/>
             <div className={styles.rightBlock}>

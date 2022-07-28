@@ -14,6 +14,7 @@ class Navbar extends Component {
     const categories = this.getCategories(data);
     const initialCategory = categories[0];
     this.props.setActiveCategory(initialCategory);
+    this.props.setCategories(categories);
   };
 
   render() {
@@ -21,8 +22,7 @@ class Navbar extends Component {
 
     return (
       <nav
-      className={`${styles.nav} ${this.props.className ? this.props.className : ''}`}
-      // className={styles.nav}
+        className={`${styles.nav} ${this.props.className ? this.props.className : ''}`}
       >
         <ul className={styles.menuList}>
           <Query
