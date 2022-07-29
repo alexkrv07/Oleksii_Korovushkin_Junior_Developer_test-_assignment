@@ -25,6 +25,7 @@ class Header extends Component {
                 setActiveCurrency={this.props.setActiveCurrency}
               />
               <CartOverlay
+                className={styles.cartOverLay}
                 productsInCart={this.props.productsInCart}
                 toggleOverlay={this.props.toggleOverlay}
                 isOverlay={this.props.isOverlay}

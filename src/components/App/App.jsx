@@ -17,7 +17,6 @@ class App extends Component {
     productsInCart: [],
     productId: null,
     isOverlay: false,
-    isCart: false
   }
 
   setCategories = (categories) => {
@@ -31,7 +30,6 @@ class App extends Component {
       activeCategory: category,
       productId: null
     });
-    this.toggleIsCart(false)
   };
 
   setActiveCurrency = (currency) => {
@@ -65,7 +63,6 @@ class App extends Component {
 
     const productsInCart = [...this.state.productsInCart];
     productsInCart[index].count += 1;
-    console.log(productsInCart[index].count)
     this.setState({
       productsInCart: [...productsInCart]
     });
@@ -98,14 +95,6 @@ class App extends Component {
       isOverlay: isOverlay
     });
     this.removeProductsWithCountZero();
-
-  }
-
-  toggleIsCart = (isCart) => {
-    this.setState({
-      isCart: isCart
-    });
-        this.removeProductsWithCountZero();
   }
 
   render() {
@@ -122,7 +111,7 @@ class App extends Component {
           isOverlay={this.state.isOverlay}
           incrementProductCount={this.incrementProductCount}
           decrementProductCount={this.decrementProductCount}
-          // toggleIsCart={this.toggleIsCart}
+          toggleIsCart={this.toggleIsCart}
         />
         <main
           className={!this.state.isOverlay ? "main": "main oveflowHidden"}
@@ -135,9 +124,8 @@ class App extends Component {
                   <ProductListPage
                     category={this.state.activeCategory}
                     categories={this.state.categories}
-                    productId={this.props.productId}
+                    setActiveCategory={this.setActiveCategory}
                     activeCurrency={this.state.activeCurrency}
-                    setProductId={this.setProductId}
                     addProductToCart={this.addProductToCart}
                   />
                 }
@@ -146,9 +134,9 @@ class App extends Component {
                   element={
                     <ProductListPage
                       category={this.state.activeCategory}
-                      productId={this.props.productId}
+                      categories={this.state.categories}
+                      setActiveCategory={this.setActiveCategory}
                       activeCurrency={this.state.activeCurrency}
-                      setProductId={this.setProductId}
                       addProductToCart={this.addProductToCart}
                     />
                   }
@@ -171,49 +159,16 @@ class App extends Component {
                 path='/products/:id'
                 element={
                   <ProductDescriptionPage
-                    productId={this.state.productId}
                     activeCurrency={this.state.activeCurrency}
                     addProductToCart={this.addProductToCart}
                     setSelectedAttributes={this.setSelectedAttributes}
                     selectedAttributeList={this.state.selectedAttributeList}
+                    setProductId={this.setProductId}
                   />
                 }
               />
-            <Route path='*' element={<Page404/>}/>
-
+             <Route path='*' element={<Page404/>}/>
             </Routes>
-
-            {/* {!this.state.productId && !this.state.isCart &&
-              <ProductListPage
-                category={this.state.activeCategory}
-                productId={this.props.productId}
-                activeCurrency={this.state.activeCurrency}
-                setProductId={this.setProductId}
-                addProductToCart={this.addProductToCart}
-              />
-            } */}
-
-            {/* {this.state.productId && !this.state.isCart &&
-              <ProductDescriptionPage
-                productId={this.state.productId}
-                activeCurrency={this.state.activeCurrency}
-                addProductToCart={this.addProductToCart}
-                setSelectedAttributes={this.setSelectedAttributes}
-                selectedAttributeList={this.state.selectedAttributeList}
-              />
-            } */}
-
-            {/* {this.state.isCart &&
-              <CartPage
-                productsInCart={this.state.productsInCart}
-                activeCurrency={this.state.activeCurrency}
-                selectedAttributeList={this.state.selectedAttributeList}
-                incrementProductCount={this.incrementProductCount}
-                decrementProductCount={this.decrementProductCount}
-                toggleIsCart={this.toggleIsCart}
-              />
-            } */}
-
           </div>
 
         </main>

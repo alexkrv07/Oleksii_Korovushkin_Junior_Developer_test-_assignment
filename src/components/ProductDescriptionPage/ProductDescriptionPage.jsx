@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useParams, } from 'react-router-dom';
 import parse from 'html-react-parser';
 import { Query } from '@apollo/client/react/components';
 import Image from '../common/Image/Image';
@@ -9,11 +10,14 @@ import { GET_PRODUCT_BY_ID } from '../../constants/query/getProducrById';
 import { getPrice, isProductHasAttributes, isSelectedAllAttributes, setInitialtAttributes } from '../../helpers/Product';
 import styles from './styles.module.css';
 
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />
+}
+
 class ProductDescriptionPage extends Component {
   state = {
     activeImage: '',
     selectedAttributeList: [],
-    // productToCart: {}
   }
 
   setActiveImage = (imageSrc) => {
@@ -60,7 +64,11 @@ class ProductDescriptionPage extends Component {
   }
 
   render() {
-    const id = this.props.productId;
+    if (!this.props.activeCurrency.label) {
+      return null;
+    }
+    let { id } = this.props.params;
+
     return (
       <div
         className={`${styles.productDescriptionPage} ${this.props.className ? this.props.className : ''}`}
@@ -144,4 +152,4 @@ class ProductDescriptionPage extends Component {
   }
 }
 
-export default ProductDescriptionPage;
+export default withParams(ProductDescriptionPage);

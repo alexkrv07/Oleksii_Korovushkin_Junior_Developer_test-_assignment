@@ -22,12 +22,12 @@ class CartOverlay extends Component {
 
   handlerViewBag = () => {
     this.props.toggleOverlay(false);
-    this.props.toggleIsCart(true);
   }
 
   render() {
     const count = getProductsTotalCount(this.props.productsInCart);
     const items = count === 1 ? 'item' : 'items';
+
     return (
       <div className={`${styles.cartOverlayWrp} ${this.props.className ? this.props.className : ''}`}>
         <ButtonCartOverlay
@@ -71,12 +71,7 @@ class CartOverlay extends Component {
                   to={`/cart`}
                   onClick={this.handlerViewBag}
                 >
-                {/* <button
-                  className={styles.btnBag}
-                  onClick={this.handlerViewBag}
-                > */}
                   Wiew bag
-                {/* </button> */}
                 </Link>
                 <button
                   className={styles.btnCheckout}

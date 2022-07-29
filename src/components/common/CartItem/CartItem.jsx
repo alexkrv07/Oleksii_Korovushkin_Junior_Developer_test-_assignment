@@ -7,12 +7,10 @@ import ImageSlider from '../ImageSlider/ImageSlider';
 
 class CartItem extends Component {
   incrementProductCount = () => {
-    console.log(this.props.index)
     this.props.incrementProductCount(this.props.index);
   }
 
   decrementProductCount = () => {
-    console.log(this.props.index)
     this.props.decrementProductCount(this.props.index);
   }
 

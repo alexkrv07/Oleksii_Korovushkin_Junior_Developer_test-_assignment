@@ -10,7 +10,6 @@ function withParams(Component) {
   return props => <Component {...props} params={useParams()} />
 }
 
-
 class ProductListPage extends Component {
 
   getProducts = (data) => {
@@ -19,12 +18,20 @@ class ProductListPage extends Component {
 
   render() {
 
-    let { category } = this.props.params;
-    if (!category) {
-      category = "all";
+    if (!this.props.categories.length) {
+      return null;
     }
 
-    if (category && !this.props.category.includes(category) ) {
+    let { category } = this.props.params;
+    if (!category) {
+      category = this.props.categories[0];
+    }
+
+    if (category !== this.props.category) {
+      this.props.setActiveCategory(category)
+    }
+
+    if (category && !this.props.categories.includes(category) ) {
       return (
         <Page404/>
       )
@@ -58,7 +65,7 @@ class ProductListPage extends Component {
               <ProductList
                 products={products}
                 activeCurrency={this.props.activeCurrency}
-                setProductId={this.props.setProductId}
+                // setProductId={this.props.setProductId}
                 addProductToCart={this.props.addProductToCart}
               />
             );

@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
+import { Navigate } from 'react-router-dom';
 import CartItem from '../common/CartItem/CartItem';
 import TotalPrice from '..//common/TotalPrice/TotalPrice';
 import styles from './styles.module.css';
 
 class CartPage extends Component {
 
+  state = {
+    isRedirect: false
+  }
+
   handlerCheckout = () => {
     console.log(this.props.productsInCart);
-    this.props.toggleIsCart(false);
+    this.setState({
+      isRedirect: true
+    });
   }
 
   render() {
+
+    if (this.state.isRedirect) {
+      return <Navigate to='/'/>
+    }
+
     return (
       <div
         className={`${styles.cartPage} ${this.props.className ? this.props.className : ''}`}
