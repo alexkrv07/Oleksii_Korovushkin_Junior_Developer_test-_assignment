@@ -1,0 +1,21 @@
+.attributeSet,
+.attributeSetOverlay,
+.attributeSetCart {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.attributeSetOverlay {
+  gap: 10px;
+}
+
+.attributeSet {
+  gap: 25px;
+}
+
+.attributeSetCart {
+  gap: 15px;
+}

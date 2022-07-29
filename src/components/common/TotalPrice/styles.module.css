@@ -1,0 +1,60 @@
+.totalPrice {
+  margin: 55px 0 0 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+}
+
+.tax,
+.count,
+.total {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.taxTitle,
+.countTitle,
+.totalTitle {
+  width: 105px;
+}
+
+.countTitle,
+.totalTitle {
+  margin-top: 10px;
+}
+
+
+.taxAmount,
+.countAmount,
+.totalPriceAmount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.totalPriceOverlay {
+  margin: 35px 0 0 0;
+}
+
+.totalPriceOverlay .tax,
+.totalPriceOverlay .count {
+  display: none;
+}
+
+.totalPriceOverlay .total {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.totalPriceOverlay .totalTitle {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.totalPriceOverlay .totalPriceAmount {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+}

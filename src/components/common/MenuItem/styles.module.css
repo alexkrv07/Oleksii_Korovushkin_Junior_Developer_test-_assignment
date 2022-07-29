@@ -1,0 +1,33 @@
+.menuItem {
+  margin: 0;
+  padding: 0 16px;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 80px;
+  color: #1D1F22;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.menuItem:hover .link{
+  color: #5ECE7B;
+  font-weight: 600;
+}
+
+.menuItem.active .link{
+  color: #5ECE7B;
+  font-weight: 600;
+  border-bottom: 2px solid #5ECE7B;
+}
+
+.link {
+  display: block;
+  box-sizing: border-box;
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+}

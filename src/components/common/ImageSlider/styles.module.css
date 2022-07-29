@@ -1,0 +1,94 @@
+.mainImageWrp {
+  position: relative;
+  box-sizing: border-box;
+  width: 200px;
+  margin-left: 25px;
+  overflow: hidden;
+  /* padding-bottom: 145%; */
+}
+
+.mainImage {
+  padding-bottom: 145%;
+}
+
+.imageList {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding-bottom: 140%;
+}
+
+.imageItem {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 200px;
+  width: 100%;
+  height: 140%;
+  margin: 0;
+  padding: 0;
+}
+
+.image {
+  padding-bottom: 140%;
+}
+
+.activeImageItem {
+  display: block;
+}
+
+.prevImageItem {
+  display: block;
+  left: -100%;
+}
+
+.nextImageItem {
+  display: block;
+  left: 100%;
+}
+
+.btnSlidePrev,
+.btnSlideNext {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.73);
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnIcon {
+  width: 12px;
+  height: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.btnSlidePrev .btnIcon {
+  background-image: url(../../../assets/image/arrow_left.svg);
+}
+
+.btnSlideNext .btnIcon {
+  background-image: url(../../../assets/image/arrow_right.svg);
+}
+
+.btnSlidePrev:hover,
+.btnSlideNext:hover {
+  transform: scale(0.97);
+}
+
+
+.blockBtn {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  bottom: 15px;
+  right: 15px;
+}

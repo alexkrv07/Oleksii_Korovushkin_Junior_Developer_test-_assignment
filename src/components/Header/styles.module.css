@@ -1,0 +1,43 @@
+.header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background-color: #fff;
+}
+
+.header .container {
+  height: 80px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin: 0;
+}
+
+.navbar,
+.rightBlock {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.rightBlock  {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: end;
+  height: 100%;
+}

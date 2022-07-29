@@ -1,0 +1,112 @@
+.productDescriptionPage {
+  margin: 0 0 0 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.imageList {
+  width: 80px;
+  margin-right: 40px;
+}
+
+.mainImageWrp {
+  width: 610px;
+  margin-left: 40px;
+}
+
+.mainImage {
+  padding-bottom: 84%;
+}
+
+.productInfo {
+  width: 290px;
+  margin: 0 0 0 100px;
+  /* background-color: teal; */
+}
+
+.productInfo {
+  font-family: 'Raleway', sans-serif;
+  font-size: 27px;
+  color: #1D1F22;
+}
+
+.productBrand {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+.productName {
+  font-weight: 400;
+  margin: 15px 0 0 0;
+}
+
+.attributeSet {
+  margin-top: 40px;
+  gap: 24px;
+}
+
+.productPrice {
+  margin: 35px 0 0 0;
+  padding: 0;
+}
+
+.productPriceTitle {
+  margin: 0;
+  padding: 0;
+}
+
+.productPriceAmount {
+  margin-top: 20px;
+}
+
+.buttonAddToCart {
+  margin: 25px 0 0 0;
+  width: 290px;
+  height: 50px;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-align: center;
+  color: #FFF;
+  background-color: #5ECE7B;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttonAddToCart:hover {
+  transform: scale(.97);
+}
+
+.productDescription {
+  margin: 40px 0 0 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.productDescription p,
+.productDescription ul {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.productDescription h1,
+.productDescription h2,
+.productDescription h3,
+.productDescription h4,
+.productDescription h5,
+.productDescription h6 {
+  font-size: 22px;
+  line-height: 30px;
+}

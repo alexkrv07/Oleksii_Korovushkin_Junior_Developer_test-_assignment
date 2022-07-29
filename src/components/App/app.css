@@ -1,0 +1,41 @@
+#root,
+.main {
+  position: relative;
+  margin: 0;
+  padding: 80px 0;
+}
+
+.main {
+  min-height: calc(100vh - 80px);
+}
+
+.main.oveflowHidden {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1300px;
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(57, 55, 72, 0.22);
+  z-index: 10;
+
+}
+
+.counter {
+  width: 24px;
+}

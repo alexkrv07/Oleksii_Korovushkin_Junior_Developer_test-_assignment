@@ -1,0 +1,97 @@
+.attributeItemText {
+  box-sizing: border-box;
+  margin-left: 12px;
+  width: 63px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #1D1F22;
+  border: 1px solid #1D1F22;
+}
+
+
+
+.attributeItemText,
+.attributeItemSwatch {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.attributeItemText:hover,
+.attributeItemText.active ,
+.attributeItemTextOverLay.active,
+.attributeItemTextCart.active {
+  color: #FFF;
+  background-color: #1D1F22;
+}
+
+.attributeItemSwatch {
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  outline: none;
+  margin-left: 10px;
+}
+
+.attributeItemSwatch:hover,
+.attributeItemSwatch.active,
+.attributeItemSwatchOverlay.active {
+  outline: 1px solid #5ECE7B;
+  outline-offset: 1px;
+}
+
+.attributeItemSwatchOverlay,
+.attributeItemSwatchCart {
+  box-sizing: border-box;
+  outline: none;
+  margin-left: 10px;
+}
+
+.attributeItemSwatchOverlay {
+  width: 16px;
+  height: 16px;
+}
+
+.attributeItemSwatchCart {
+  width: 32px;
+  height: 32px;
+}
+
+.attributeItemTextOverLay,
+.attributeItemTextCart {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #1D1F22;
+  border: 1px solid #1D1F22;
+  overflow: hidden;
+}
+
+.attributeItemTextOverLay {
+  width: 24px;
+  height: 24x;
+  font-size: 13px;
+  line-height: 24px;
+  margin-left: 8px;
+}
+
+.attributeItemTextCart {
+  width: 63px;
+  height: 45x;
+  font-size: 16px;
+  line-height: 45px;
+  margin-left: 10px;
+}
+
+.attributeItemText:first-child,
+.attributeItemSwatch:first-child,
+.attributeItemTextOverLay:first-child,
+.attributeItemSwatchOverlay:first-child,
+.attributeItemTextCart:first-child,
+.attributeItemSwatchCart:first-child {
+  margin: 0;
+}
