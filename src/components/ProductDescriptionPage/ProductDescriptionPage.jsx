@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useParams, } from 'react-router-dom';
+import { useParams,  Navigate} from 'react-router-dom';
 import parse from 'html-react-parser';
 import { Query } from '@apollo/client/react/components';
 import Image from '../common/Image/Image';
@@ -28,7 +28,7 @@ class ProductDescriptionPage extends Component {
 
   setInitialImage = (data) => {
     const { product } = data;
-    const { gallery } = product;
+        const { gallery } = product;
     this.setActiveImage(gallery[0]);
   }
 
@@ -63,6 +63,7 @@ class ProductDescriptionPage extends Component {
     }
   }
 
+
   render() {
     if (!this.props.activeCurrency.label) {
       return null;
@@ -77,6 +78,9 @@ class ProductDescriptionPage extends Component {
           query={GET_PRODUCT_BY_ID}
           variables={ {id} }
           onCompleted={(data) => {
+            if(!data.product) {
+              return;
+            }
             this.setInitialImage(data);
             this.setInitialSelectedAttributes(data)
           }}
@@ -87,10 +91,15 @@ class ProductDescriptionPage extends Component {
             }
 
             if (error) {
+              console.log('Error!')
               return `Error! ${error}`;
             }
 
+
             const { product } = data;
+            if (!product) {
+              return <Navigate to={`/404`}/>
+            }
             const { gallery } = product;
             const price = getPrice(product, this.props.activeCurrency)
 

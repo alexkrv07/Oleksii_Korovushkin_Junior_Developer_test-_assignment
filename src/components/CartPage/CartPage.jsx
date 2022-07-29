@@ -23,6 +23,10 @@ class CartPage extends Component {
       return <Navigate to='/'/>
     }
 
+    if (!this.props.activeCurrency.label) {
+      return null;
+    }
+
     return (
       <div
         className={`${styles.cartPage} ${this.props.className ? this.props.className : ''}`}

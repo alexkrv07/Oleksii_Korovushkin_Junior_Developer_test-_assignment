@@ -15,7 +15,6 @@ class App extends Component {
     categories: [],
     activeCurrency: {},
     productsInCart: [],
-    productId: null,
     isOverlay: false,
   }
 
@@ -38,12 +37,6 @@ class App extends Component {
     });
   };
 
-  setProductId = (productId) => {
-    this.setState({
-      productId: productId,
-    });
-  }
-
   addProductToCart = (product) => {
     const productsInCart = [...this.state.productsInCart];
     const productInCartWithSameAttributes = getProductWithSameAttributesInCart(productsInCart, product);
@@ -57,6 +50,7 @@ class App extends Component {
     this.setState({
       productsInCart: [...productsInCart]
     });
+    localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
   };
 
   incrementProductCount = (index) => {
@@ -66,6 +60,7 @@ class App extends Component {
     this.setState({
       productsInCart: [...productsInCart]
     });
+    localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
   }
 
   decrementProductCount = (index) => {
@@ -79,6 +74,7 @@ class App extends Component {
     this.setState({
       productsInCart: [...productsInCart]
     });
+    localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
   }
 
   removeProductsWithCountZero = () => {
@@ -88,6 +84,7 @@ class App extends Component {
     this.setState({
       productsInCart: [...productsInCart]
     });
+    localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
   }
 
   toggleOverlay = (isOverlay) => {
@@ -96,6 +93,18 @@ class App extends Component {
     });
     this.removeProductsWithCountZero();
   }
+
+  componentDidMount = () => {
+    const productsInCart = JSON.parse(localStorage.getItem('productsInCart'));
+    if (productsInCart) {
+
+      this.setState({
+        productsInCart: productsInCart.filter(
+          product => product.count !== 0
+        )
+      });
+    }
+   }
 
   render() {
     return (
@@ -111,7 +120,6 @@ class App extends Component {
           isOverlay={this.state.isOverlay}
           incrementProductCount={this.incrementProductCount}
           decrementProductCount={this.decrementProductCount}
-          toggleIsCart={this.toggleIsCart}
         />
         <main
           className={!this.state.isOverlay ? "main": "main oveflowHidden"}
@@ -151,7 +159,6 @@ class App extends Component {
                     selectedAttributeList={this.state.selectedAttributeList}
                     incrementProductCount={this.incrementProductCount}
                     decrementProductCount={this.decrementProductCount}
-                    toggleIsCart={this.toggleIsCart}
                   />
                 }
               />
@@ -163,14 +170,12 @@ class App extends Component {
                     addProductToCart={this.addProductToCart}
                     setSelectedAttributes={this.setSelectedAttributes}
                     selectedAttributeList={this.state.selectedAttributeList}
-                    setProductId={this.setProductId}
                   />
                 }
               />
              <Route path='*' element={<Page404/>}/>
             </Routes>
           </div>
-
         </main>
       </>
     );
