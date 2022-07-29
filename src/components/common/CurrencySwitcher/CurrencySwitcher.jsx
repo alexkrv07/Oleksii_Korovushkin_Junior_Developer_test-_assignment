@@ -10,16 +10,15 @@ class CurrencySwitcher extends Component {
     isOpen: false,
   };
 
-  toggleDropDown = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
+  toggleDropDown = (evt) => {
+    evt.stopPropagation();
+    this.setState({ isOpen: !this.state.isOpen });
+    document.addEventListener('click', this.closeCurrencyDropDown);
   };
 
   closeCurrencyDropDown = () => {
-    this.setState({
-      isOpen: false,
-    });
+    this.setState( { isOpen: false });
+    document.removeEventListener('click', this.closeCurrencyDropDown);
   };
 
   changeCurrency = (currency) => {
