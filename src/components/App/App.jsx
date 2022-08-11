@@ -66,14 +66,14 @@ class App extends Component {
   decrementProductCount = (index) => {
 
     const productsInCart = [...this.state.productsInCart];
-    if (productsInCart[index].count === 0) {
-      return;
-    }
     productsInCart[index].count -= 1;
-
-    this.setState({
-      productsInCart: [...productsInCart]
-    });
+    if (productsInCart[index].count === 0) {
+      this.removeProductsWithCountZero();
+    } else {
+      this.setState({
+        productsInCart: [...productsInCart]
+      });
+    }
     localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
   }
 
