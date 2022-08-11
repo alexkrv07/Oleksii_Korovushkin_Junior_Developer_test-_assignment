@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { useParams, } from 'react-router-dom';
 import { Query } from '@apollo/client/react/components';
 import ProductList from '../common/ProductList/ProductList';
 import { GET_PRODUCTS_BY_CATEGORY } from '../../constants/query/getProductsByCategory';
 import styles from './styles.module.css';
 import Page404 from '../Page404/Page404';
-
-function withParams(Component) {
-  return props => <Component {...props} params={useParams()} />
-}
+import { withParams } from '../../helpers/withParams';
 
 class ProductListPage extends Component {
 

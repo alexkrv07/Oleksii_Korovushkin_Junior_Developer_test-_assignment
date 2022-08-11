@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useParams,  Navigate} from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 import parse from 'html-react-parser';
 import { Query } from '@apollo/client/react/components';
 import Image from '../common/Image/Image';
@@ -8,11 +8,8 @@ import ProductAttributeSet from '../common/ProductAttributeSet/ProductAttributeS
 import Price from '../common/Price/Price';
 import { GET_PRODUCT_BY_ID } from '../../constants/query/getProducrById';
 import { getPrice, isProductHasAttributes, isSelectedAllAttributes, setInitialtAttributes } from '../../helpers/Product';
+import { withParams } from '../../helpers/withParams';
 import styles from './styles.module.css';
-
-function withParams(Component) {
-  return props => <Component {...props} params={useParams()} />
-}
 
 class ProductDescriptionPage extends Component {
   state = {
