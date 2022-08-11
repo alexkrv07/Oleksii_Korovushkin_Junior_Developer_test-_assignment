@@ -62,7 +62,7 @@ class CurrencySwitcher extends Component {
 
           return (
             <div className={`${styles.currencyWrp} ${this.props.className ? this.props.className : ''}`}>
-              <div className={styles.currencySwitcher}>
+              {/* <div className={styles.currencySwitcher}>
                 <CurrencySymbol
                   className={styles.currencyValue}
                   currency={activeCurrency}
@@ -74,7 +74,24 @@ class CurrencySwitcher extends Component {
                     : styles.currencySelect}
                     onClick={this.toggleDropDown}
                  />
-              </div>
+              </div> */}
+              <button
+                className={`${styles.currencyWrp} ${this.props.className ? this.props.className : ''}`}
+                onClick={this.toggleDropDown}
+              >
+                <CurrencySymbol
+                  className={styles.currencyValue}
+                  currency={activeCurrency}
+                />
+                <span
+                  className={
+                    this.state.isOpen
+                    ? `${styles.currencySelect} ${styles.open}`
+                    : styles.currencySelect}
+                />
+
+                {/* </span> */}
+              </button>
               {this.state.isOpen &&
                 <CurrencyList
                   className={styles.currencyList}

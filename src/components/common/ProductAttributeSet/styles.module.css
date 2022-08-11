@@ -6,6 +6,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
+  color: #1D1F22;
 }
 
 .attributeSetOverlay {
