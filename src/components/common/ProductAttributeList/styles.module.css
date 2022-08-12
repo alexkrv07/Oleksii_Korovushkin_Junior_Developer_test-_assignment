@@ -29,6 +29,7 @@
 
 .attributeListWrpOverlay .attributeList {
   margin: 8px 0 0 0;
+  gap: 8px;
 }
 
 .attributeListWrpCart .attributeTitle {
