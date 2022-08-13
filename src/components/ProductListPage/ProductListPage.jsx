@@ -61,7 +61,6 @@ class ProductListPage extends Component {
               <ProductList
                 products={products}
                 activeCurrency={this.props.activeCurrency}
-                // setProductId={this.props.setProductId}
                 addProductToCart={this.props.addProductToCart}
               />
             );

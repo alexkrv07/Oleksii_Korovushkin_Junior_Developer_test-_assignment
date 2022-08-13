@@ -7,12 +7,8 @@ import styles from './styles.module.css';
 import CartItem from '../CartItem/CartItem';
 
 class CartOverlay extends Component {
-  // state = {
-  //   isOpen: false,
-  // }
 
   handlerOnClick = (evt) => {
-    // this.props.toggleOverlay(!this.props.isOverlay);
     evt.stopPropagation();
     this.props.toggleCurrencyOverlay(false);
     this.props.toggleOverlay(!this.props.isOverlay);
@@ -32,12 +28,10 @@ class CartOverlay extends Component {
   handlerCheckout = () => {
     console.log(this.props.productsInCart);
     this.closeCartOverlay();
-    // this.props.toggleOverlay(false);
   }
 
   handlerViewBag = () => {
     this.closeCartOverlay();
-    // this.props.toggleOverlay(false);
   }
 
   render() {
