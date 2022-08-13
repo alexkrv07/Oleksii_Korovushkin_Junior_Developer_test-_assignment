@@ -92,12 +92,11 @@ class ProductDescriptionPage extends Component {
               return `Error! ${error}`;
             }
 
-
             const { product } = data;
             if (!product) {
               return <Navigate to={`/404`}/>
             }
-            const { gallery } = product;
+            const { gallery, inStock } = product;
             const price = getPrice(product, this.props.activeCurrency)
 
             return (
@@ -116,6 +115,11 @@ class ProductDescriptionPage extends Component {
                     alt={product.name}
                     src={this.state.activeImage}
                   />
+                  {/* {!inStock &&
+                    <div className={styles.disactive}>
+                      Out of stock
+                    </div>
+                  } */}
                 </div>
                 <div className={styles.productInfo}>
                   <div className={styles.productTitle}>
@@ -140,6 +144,7 @@ class ProductDescriptionPage extends Component {
                   <button
                     className={styles.buttonAddToCart}
                     onClick={() => this.addProductToCart(product)}
+                    disabled={!inStock}
                   >
                     Add to Cart
                   </button>

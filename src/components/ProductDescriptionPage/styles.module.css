@@ -16,6 +16,7 @@
 }
 
 .mainImageWrp {
+  position: relative;
   width: 610px;
   margin-left: 40px;
 }
@@ -24,10 +25,27 @@
   padding-bottom: 84%;
 }
 
+.disactive {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  opacity: 0.5;
+  z-index: 2;
+  color: #8D8F9A;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .productInfo {
   width: 290px;
   margin: 0 0 0 100px;
-  /* background-color: teal; */
 }
 
 .productInfo {
@@ -82,6 +100,11 @@
   outline: none;
   cursor: pointer;
   transition: 0.3s;
+}
+
+.buttonAddToCart:disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .buttonAddToCart:hover {
