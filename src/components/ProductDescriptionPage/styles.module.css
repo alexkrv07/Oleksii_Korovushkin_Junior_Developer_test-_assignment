@@ -126,6 +126,15 @@
   line-height: 26px;
 }
 
+.productDescription ul {
+  list-style: none;
+  padding: 0;
+}
+
+.productDescription li {
+  margin-top: 10px;
+}
+
 .productDescription h1,
 .productDescription h2,
 .productDescription h3,
