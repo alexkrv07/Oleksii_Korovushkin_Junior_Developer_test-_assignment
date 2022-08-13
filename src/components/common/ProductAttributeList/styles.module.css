@@ -19,6 +19,8 @@
   margin: 10px 0 0 0;
   padding: 0;
   list-style: none;
+  gap: 10px;
+
 }
 
 .attributeListWrpOverlay .attributeTitle {
