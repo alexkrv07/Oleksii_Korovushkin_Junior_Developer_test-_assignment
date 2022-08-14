@@ -39,7 +39,11 @@ class CartOverlay extends Component {
     const items = count === 1 ? 'item' : 'items';
 
     return (
-      <div className={`${styles.cartOverlayWrp} cartOverlay ${this.props.className ? this.props.className : ''}`}>
+      <div
+        className={`${styles.cartOverlayWrp} cartOverlay ${this.props.className ? this.props.className : ''}`}
+        onClick={evt => evt.stopPropagation()}
+      >
+
         <ButtonCartOverlay
           items={count}
           handler={this.handlerOnClick }
