@@ -15,7 +15,8 @@ class App extends Component {
     categories: [],
     activeCurrency: {},
     productsInCart: [],
-    isOverlay: false,
+    isCartOverlay: false,
+    isCurrencyOverlay: false,
   }
 
   setCategories = (categories) => {
@@ -66,14 +67,14 @@ class App extends Component {
   decrementProductCount = (index) => {
 
     const productsInCart = [...this.state.productsInCart];
-    if (productsInCart[index].count === 0) {
-      return;
-    }
     productsInCart[index].count -= 1;
-
-    this.setState({
-      productsInCart: [...productsInCart]
-    });
+    if (productsInCart[index].count === 0) {
+      this.removeProductsWithCountZero();
+    } else {
+      this.setState({
+        productsInCart: [...productsInCart]
+      });
+    }
     localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
   }
 
@@ -87,12 +88,18 @@ class App extends Component {
     localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
   }
 
-  toggleOverlay = (isOverlay) => {
+  toggleOverlay = (isCartOverlay) => {
     this.setState({
-      isOverlay: isOverlay
+      isCartOverlay: isCartOverlay
     });
     this.removeProductsWithCountZero();
   }
+
+  toggleCurrencyOverlay = (isCurrencyOverlay) => {
+    this.setState({
+      isCurrencyOverlay: isCurrencyOverlay
+    });
+   }
 
   componentDidMount = () => {
     const productsInCart = JSON.parse(localStorage.getItem('productsInCart'));
@@ -117,14 +124,16 @@ class App extends Component {
           setCategories={this.setCategories}
           productsInCart={this.state.productsInCart}
           toggleOverlay={this.toggleOverlay}
-          isOverlay={this.state.isOverlay}
+          isOverlay={this.state.isCartOverlay}
+          isCurrencyOverlay={this.state.isCurrencyOverlay}
+          toggleCurrencyOverlay={this.toggleCurrencyOverlay}
           incrementProductCount={this.incrementProductCount}
           decrementProductCount={this.decrementProductCount}
         />
         <main
-          className={!this.state.isOverlay ? "main": "main oveflowHidden"}
+          className={!this.state.isCartOverlay ? "main": "main oveflowHidden"}
         >
-          {this.state.isOverlay && <div className="overlay"></div>}
+          {this.state.isCartOverlay && <div className="overlay"></div>}
           <div className="container">
             <Routes>
               <Route path='/'

@@ -9,10 +9,6 @@
   cursor: pointer;
 }
 
-.productCard.disable {
-  pointer-events: none;
-}
-
 .productCard:hover .buttonAddToCart {
   display: block;
 }
@@ -34,7 +30,6 @@
   background-color: #fff;
   opacity: 0.5;
   z-index: 2;
-  pointer-events: none;
   color: #8D8F9A;
   text-transform: uppercase;
   font-size: 24px;
@@ -42,7 +37,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .productCardImage {

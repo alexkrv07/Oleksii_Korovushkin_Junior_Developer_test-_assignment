@@ -6,18 +6,16 @@ import { GET_CURRENCIES } from '../../../constants/query/getCurrencies';
 import styles from './styles.module.css';
 
 class CurrencySwitcher extends Component {
-  state = {
-    isOpen: false,
-  };
 
   toggleDropDown = (evt) => {
     evt.stopPropagation();
-    this.setState({ isOpen: !this.state.isOpen });
+    this.props.toggleOverlay(false);
+    this.props.toggleCurrencyOverlay(!this.props.isCurrencyOverlay);
     document.addEventListener('click', this.closeCurrencyDropDown);
   };
 
   closeCurrencyDropDown = () => {
-    this.setState( { isOpen: false });
+    this.props.toggleCurrencyOverlay(false);
     document.removeEventListener('click', this.closeCurrencyDropDown);
   };
 
@@ -62,20 +60,22 @@ class CurrencySwitcher extends Component {
 
           return (
             <div className={`${styles.currencyWrp} ${this.props.className ? this.props.className : ''}`}>
-              <div className={styles.currencySwitcher}>
+              <button
+                className={`${styles.currencyWrp} ${this.props.className ? this.props.className : ''}`}
+                onClick={this.toggleDropDown}
+              >
                 <CurrencySymbol
                   className={styles.currencyValue}
                   currency={activeCurrency}
                 />
-                <button
+                <span
                   className={
-                    this.state.isOpen
+                    this.props.isCurrencyOverlay
                     ? `${styles.currencySelect} ${styles.open}`
                     : styles.currencySelect}
-                    onClick={this.toggleDropDown}
-                 />
-              </div>
-              {this.state.isOpen &&
+                />
+              </button>
+              { this.props.isCurrencyOverlay &&
                 <CurrencyList
                   className={styles.currencyList}
                   currencies={currencies}

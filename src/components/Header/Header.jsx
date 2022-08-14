@@ -23,12 +23,16 @@ class Header extends Component {
                 className={styles.curencySwitcher}
                 activeCurrency={this.props.activeCurrency}
                 setActiveCurrency={this.props.setActiveCurrency}
+                isCurrencyOverlay={this.props.isCurrencyOverlay}
+                toggleCurrencyOverlay={this.props.toggleCurrencyOverlay}
+                toggleOverlay={this.props.toggleOverlay}
               />
               <CartOverlay
                 className={styles.cartOverLay}
                 productsInCart={this.props.productsInCart}
                 toggleOverlay={this.props.toggleOverlay}
                 isOverlay={this.props.isOverlay}
+                toggleCurrencyOverlay={this.props.toggleCurrencyOverlay}
                 activeCurrency={this.props.activeCurrency}
                 selectedAttributeList={this.props.selectedAttributeList}
                 incrementProductCount={this.props.incrementProductCount}

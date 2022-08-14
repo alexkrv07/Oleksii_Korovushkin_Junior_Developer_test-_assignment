@@ -4,18 +4,19 @@
   font-weight: 500;
   font-size: 18px;
   height: 100%;
-  color: #1D1F22
-}
-
-.currencySwitcher {
+  color: #1D1F22;
   display: flex;
   align-items: center;
-  height: 100%;
   gap: 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .currencyValue {
-  width: 30px;
+  width: 15px;
 }
 
 .currencySelect {
@@ -25,11 +26,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  transition: 0.3s;
-  cursor: pointer;
+
 }
 
 

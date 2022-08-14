@@ -7,21 +7,31 @@ import styles from './styles.module.css';
 import CartItem from '../CartItem/CartItem';
 
 class CartOverlay extends Component {
-  state = {
-    isOpen: false,
+
+  handlerOnClick = (evt) => {
+    evt.stopPropagation();
+    this.props.toggleCurrencyOverlay(false);
+    this.props.toggleOverlay(!this.props.isOverlay);
+    document.addEventListener('click', this.closeCartOverlay);
   }
 
-  handlerOnClick = () => {
-    this.props.toggleOverlay(!this.props.isOverlay);
+
+  closeCartOverlay = (evt) => {
+    const CartOverlay = document.querySelector('.cartOverlay')
+    if (evt.target === CartOverlay) {
+      return
+    }
+    this.props.toggleOverlay(false);
+    document.removeEventListener('click', this.closeCartOverlay);
   }
 
   handlerCheckout = () => {
     console.log(this.props.productsInCart);
-    this.props.toggleOverlay(false);
+    this.closeCartOverlay();
   }
 
   handlerViewBag = () => {
-    this.props.toggleOverlay(false);
+    this.closeCartOverlay();
   }
 
   render() {
@@ -29,7 +39,11 @@ class CartOverlay extends Component {
     const items = count === 1 ? 'item' : 'items';
 
     return (
-      <div className={`${styles.cartOverlayWrp} ${this.props.className ? this.props.className : ''}`}>
+      <div
+        className={`${styles.cartOverlayWrp} cartOverlay ${this.props.className ? this.props.className : ''}`}
+        onClick={evt => evt.stopPropagation()}
+      >
+
         <ButtonCartOverlay
           items={count}
           handler={this.handlerOnClick }
